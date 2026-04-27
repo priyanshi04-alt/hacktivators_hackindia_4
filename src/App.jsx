@@ -165,35 +165,31 @@ const AuthView = ({ onComplete }) => {
 // ==========================================
 // VIEW 2: HOME (Light Red Theme)
 // ==========================================
-const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout }) => {
+const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onSearch }) => {
   const [formData, setFormData] = useState({ 
     category: userProfile?.category || '', 
     age: userProfile?.age || '', 
     income: userProfile?.income || '', 
     state: userProfile?.state || '' 
   });
-  const [isPersonalized, setIsPersonalized] = useState(!!userProfile);
   
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setIsPersonalized(true);
+    onSearch(formData);
   };
 
   const age = parseInt(formData.age) || 0;
   const income = parseInt(formData.income) || 0;
   
   let filteredSchemes = schemesData.filter(s => {
-    if (!isPersonalized) return true;
+    if (!userProfile) return true;
     const matchAge = age >= s.eligibility.minAge && age <= s.eligibility.maxAge;
     const matchIncome = income <= s.eligibility.maxIncome;
-    return matchAge && matchIncome;
+    const matchCategory = userProfile.category ? s.category === userProfile.category : true;
+    return matchAge && matchIncome && matchCategory;
   });
 
-  if (isPersonalized) {
-    filteredSchemes.sort((a, b) => a.category === formData.category ? -1 : 1);
-  }
-  
-  const displaySchemes = filteredSchemes.slice(0, 3);
+  const displaySchemes = filteredSchemes.slice(0, 6);
 
   return (
     <div className="home-view">
@@ -224,7 +220,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout }) => {
       </header>
 
       <section className="hero">
-        <div className="container hero-grid">
+        <div className="container hero-centered">
           <div className="hero-text">
             <h1>Find Government Schemes <span className="text-gradient">You Are Eligible For</span></h1>
             <p>Personalized scheme recommendations based on your profile in just a few seconds.</p>
@@ -234,10 +230,6 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout }) => {
               <div className="check-item"><Check className="check-icon" size={20}/> Official Information</div>
               <div className="check-item"><Check className="check-icon" size={20}/> Secure & Reliable</div>
             </div>
-          </div>
-          
-          <div className="hero-image">
-            <img src="https://images.unsplash.com/photo-1541888049870-1b4e3390cc63?q=80&w=2070&auto=format&fit=crop" alt="Government Building" />
           </div>
         </div>
       </section>
@@ -309,7 +301,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout }) => {
       <section id="schemes" className="section" style={{ background: 'var(--glass-bg)' }}>
         <div className="container">
           <div className="schemes-header">
-            <h2 style={{ fontSize: '2rem', fontWeight: 800 }}>Top Schemes You Might Be Eligible For</h2>
+            <h2 style={{ fontSize: '2rem', fontWeight: 800 }}>Top Recommendations</h2>
             <a href="#" className="view-all">View All Schemes →</a>
           </div>
           
@@ -327,7 +319,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout }) => {
                   <h3 className="card-title">{scheme.title}</h3>
                   <p className="card-desc">{scheme.description}</p>
                   
-                  {isPersonalized && (
+                  {userProfile && (
                     <div style={{ background: '#fef2f2', padding: '0.75rem', borderRadius: '8px', fontSize: '0.85rem', color: '#dc2626', marginBottom: '1.5rem', borderLeft: '3px solid #dc2626' }}>
                       ⭐ <strong>Recommended:</strong> Profile Match
                     </div>
@@ -408,28 +400,62 @@ const SchemeDetailsView = ({ scheme, onBack }) => {
   const [aiExplanation, setAiExplanation] = useState(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [language, setLanguage] = useState('en');
+  const [translatedData, setTranslatedData] = useState(null);
 
-  const handleExplain = (mode) => {
+  const translateText = async (text) => {
+    try {
+      const res = await fetch(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=hi&dt=t&q=${encodeURIComponent(text)}`);
+      const data = await res.json();
+      return data[0].map(x => x[0]).join('');
+    } catch (e) {
+      return text;
+    }
+  };
+
+  const translateArray = async (arr) => {
+    return Promise.all(arr.map(text => translateText(text)));
+  };
+
+  const handleExplain = async (mode) => {
     setIsAiLoading(true);
     setAiExplanation(null);
     
-    setTimeout(() => {
-      if (mode === 'simple') {
-        setLanguage('en');
-        setAiExplanation(scheme.details.aiSummary);
-      } else if (mode === 'kid') {
-        setLanguage('en');
-        setAiExplanation(`Imagine this is a gift from the government for your studies. They give you money every year so you don't have to worry about buying books or paying fees. All you need to do is keep studying well and pass your exams!`);
-      } else if (mode === 'hindi') {
-        setLanguage('hi');
-        setAiExplanation(scheme.detailsHindi.aiSummary);
+    if (mode === 'simple') {
+      setLanguage('en');
+      setTimeout(() => {
+        setAiExplanation(scheme.simpleExplanation || "This scheme provides financial assistance. Please refer to the benefits section for exact details.");
+        setIsAiLoading(false);
+      }, 1000);
+    } else if (mode === 'kid') {
+      setLanguage('en');
+      setTimeout(() => {
+        setAiExplanation(`Imagine this is a gift from the government! They give you support so you don't have to worry about your daily challenges. All you need to do is apply!`);
+        setIsAiLoading(false);
+      }, 1000);
+    } else if (mode === 'hindi') {
+      setLanguage('hi');
+      // Translate explanation
+      const exp = await translateText(scheme.simpleExplanation || "This scheme provides financial assistance.");
+      setAiExplanation(exp);
+      
+      // Translate lists if not already done
+      if (!translatedData) {
+        const hindiElig = await translateArray(scheme.details.eligibility);
+        const hindiBen = await translateArray(scheme.details.benefits);
+        const hindiTitle = await translateText(scheme.title);
+        setTranslatedData({
+          title: hindiTitle,
+          eligibility: hindiElig,
+          benefits: hindiBen
+        });
       }
       setIsAiLoading(false);
-    }, 1000);
+    }
   };
 
-  const schemeData = language === 'hi' ? scheme.detailsHindi : scheme.details;
-  const title = language === 'hi' ? scheme.detailsHindi.title : scheme.title;
+  const currentEligibility = language === 'hi' && translatedData ? translatedData.eligibility : scheme.details.eligibility;
+  const currentBenefits = language === 'hi' && translatedData ? translatedData.benefits : scheme.details.benefits;
+  const title = language === 'hi' && translatedData ? translatedData.title : scheme.title;
   
   return (
     <div className="details-view">
@@ -476,12 +502,12 @@ const SchemeDetailsView = ({ scheme, onBack }) => {
           <div className="details-text">
             <p style={{ marginBottom: '1rem', color: '#1e293b' }}><strong>{language === 'hi' ? 'पात्रता:' : 'Eligibility:'}</strong></p>
             <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>
-              {schemeData.eligibility.map((item, i) => <li key={i}>{item}</li>)}
+              {currentEligibility.map((item, i) => <li key={i}>{item}</li>)}
             </ul>
 
             <p style={{ marginBottom: '1rem', color: '#1e293b' }}><strong>{language === 'hi' ? 'लाभ:' : 'Benefits:'}</strong></p>
             <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>
-              {schemeData.benefits.map((item, i) => <li key={i}>{item}</li>)}
+              {currentBenefits.map((item, i) => <li key={i}>{item}</li>)}
             </ul>
           </div>
 
@@ -498,7 +524,57 @@ const SchemeDetailsView = ({ scheme, onBack }) => {
 // ==========================================
 // VIEW 4: CHATBOT (Base44 Gradient)
 // ==========================================
+// ==========================================
+// VIEW 4: CHATBOT (Base44 Gradient)
+// ==========================================
 const ChatbotView = ({ onBack }) => {
+  const [messages, setMessages] = useState([]);
+  const [input, setInput] = useState('');
+  const [isTyping, setIsTyping] = useState(false);
+  const [chatStarted, setChatStarted] = useState(false);
+  const messagesEndRef = React.useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  React.useEffect(() => {
+    scrollToBottom();
+  }, [messages, isTyping]);
+
+  const handleSend = (text) => {
+    const userText = text || input;
+    if (!userText.trim()) return;
+
+    if (!chatStarted) setChatStarted(true);
+
+    const newMessages = [...messages, { text: userText, isBot: false }];
+    setMessages(newMessages);
+    setInput('');
+    setIsTyping(true);
+
+    // Simulated AI Response
+    setTimeout(() => {
+      let botReply = "I can help you find government schemes! Please tell me your category (like Student, Farmer, Business) or your age and income.";
+      
+      const lower = userText.toLowerCase();
+      if (lower.includes('farmer') || lower.includes('agriculture')) {
+        botReply = "I found several schemes for farmers! The top recommendation is the 'PM-Kisan Samman Nidhi', which provides ₹6,000/year directly to your bank account. Should I show you how to apply?";
+      } else if (lower.includes('student') || lower.includes('scholarship')) {
+        botReply = "For students, we have schemes like the 'Central Sector Scholarship'. It offers ₹10,000/year for graduation level if your family income is below ₹8 Lakhs. Would you like details on documents needed?";
+      } else if (lower.includes('business') || lower.includes('loan')) {
+        botReply = "Looking to start a business? The 'PM MUDRA Yojana' offers loans up to ₹10 Lakh without collateral! Let me know if you want to see the eligibility criteria.";
+      } else if (lower.includes('health') || lower.includes('medical')) {
+        botReply = "For health coverage, the 'Ayushman Bharat' scheme provides up to ₹5 Lakhs free health insurance per family per year at empaneled hospitals. Do you have an Ayushman card?";
+      } else if (lower.includes('yes') || lower.includes('show') || lower.includes('details')) {
+        botReply = "Great! You typically need your Aadhaar Card, Income Certificate, and Bank Details. You can apply directly on the official portal. Would you like the direct application link?";
+      }
+
+      setMessages([...newMessages, { text: botReply, isBot: true }]);
+      setIsTyping(false);
+    }, 1500);
+  };
+
   return (
     <div className="chat-view">
       <header className="chat-header">
@@ -510,38 +586,193 @@ const ChatbotView = ({ onBack }) => {
         </button>
       </header>
 
-      <div className="chat-container">
-        <h1 className="chat-heading">
-          Let's find your scheme.<br/>
-          <span className="chat-heading-highlight">Right now.</span>
-        </h1>
-        
-        <p style={{ fontSize: '1.25rem', color: '#475569', marginBottom: '2rem' }}>
-          SaarthiAI lets you find fully-funded government schemes in minutes with just your words.<br/>
-          No complex jargon necessary.
-        </p>
-
-        <div className="chat-input-wrapper">
-          <div style={{ position: 'relative' }}>
-            <input 
-              type="text" 
-              className="chat-input" 
-              placeholder="What are you looking for?"
-            />
-            <button className="chat-submit">
-              <ArrowRight size={20} />
-            </button>
-          </div>
+      {!chatStarted ? (
+        <div className="chat-container">
+          <h1 className="chat-heading">
+            Let's find your scheme.<br/>
+            <span className="chat-heading-highlight">Right now.</span>
+          </h1>
           
-          <div className="chat-suggestions-title">Not sure where to start? Try one of these:</div>
-          <div className="chat-suggestions">
-            <div className="chat-pill">Schemes for Farmers</div>
-            <div className="chat-pill">Education Scholarships</div>
-            <div className="chat-pill">Small Business Loans</div>
-            <div className="chat-pill">Health Insurance</div>
+          <p style={{ fontSize: '1.25rem', color: '#475569', margin: '0 auto 2rem auto', maxWidth: '600px' }}>
+            SaarthiAI lets you find fully-funded government schemes in minutes with just your words.<br/>
+            No complex jargon necessary.
+          </p>
+
+          <div className="chat-input-wrapper" style={{ margin: '0 auto', width: '100%' }}>
+            <form style={{ position: 'relative' }} onSubmit={(e) => { e.preventDefault(); handleSend(); }}>
+              <input 
+                type="text" 
+                className="chat-input" 
+                placeholder="What are you looking for?"
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+              />
+              <button type="submit" className="chat-submit">
+                <ArrowRight size={20} />
+              </button>
+            </form>
+            
+            <div className="chat-suggestions-title" style={{ marginTop: '2rem' }}>Not sure where to start? Try one of these:</div>
+            <div className="chat-suggestions" style={{ justifyContent: 'center' }}>
+              <div className="chat-pill" onClick={() => handleSend("Schemes for Farmers")}>Schemes for Farmers</div>
+              <div className="chat-pill" onClick={() => handleSend("Education Scholarships")}>Education Scholarships</div>
+              <div className="chat-pill" onClick={() => handleSend("Small Business Loans")}>Small Business Loans</div>
+            </div>
           </div>
         </div>
-      </div>
+      ) : (
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', maxWidth: '800px', margin: '0 auto', width: '100%', padding: '0 1rem' }}>
+          
+          <div style={{ flex: 1, overflowY: 'auto', padding: '2rem 0', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+            <div style={{ alignSelf: 'flex-start', background: 'white', padding: '1rem 1.5rem', borderRadius: '20px', borderBottomLeftRadius: '4px', maxWidth: '80%', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
+              Hi! I am SaarthiAI. I can help you find government schemes in simple words. What are you looking for today?
+            </div>
+
+            {messages.map((msg, idx) => (
+              <div key={idx} style={{ 
+                alignSelf: msg.isBot ? 'flex-start' : 'flex-end', 
+                background: msg.isBot ? 'white' : '#dc2626', 
+                color: msg.isBot ? '#0f172a' : 'white',
+                padding: '1rem 1.5rem', 
+                borderRadius: '20px', 
+                borderBottomLeftRadius: msg.isBot ? '4px' : '20px',
+                borderBottomRightRadius: !msg.isBot ? '4px' : '20px',
+                maxWidth: '80%', 
+                boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
+                lineHeight: '1.5'
+              }}>
+                {msg.text}
+              </div>
+            ))}
+            {isTyping && (
+              <div style={{ alignSelf: 'flex-start', background: 'white', padding: '1rem 1.5rem', borderRadius: '20px', borderBottomLeftRadius: '4px', display: 'flex', gap: '0.5rem', alignItems: 'center' }}>
+                <span className="typing-dot"></span><span className="typing-dot"></span><span className="typing-dot"></span>
+              </div>
+            )}
+            <div ref={messagesEndRef} />
+          </div>
+
+          <div style={{ padding: '1.5rem 0' }}>
+            <form className="chat-input-wrapper" style={{ margin: 0, padding: '1rem' }} onSubmit={(e) => { e.preventDefault(); handleSend(); }}>
+              <div style={{ position: 'relative', display: 'flex', alignItems: 'center' }}>
+                <input 
+                  type="text" 
+                  className="chat-input" 
+                  style={{ margin: 0, fontSize: '1.1rem' }}
+                  placeholder="Type your message here..."
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                />
+                <button type="submit" className="chat-submit" style={{ position: 'static', marginLeft: '1rem', flexShrink: 0 }}>
+                  <ArrowRight size={20} />
+                </button>
+              </div>
+            </form>
+          </div>
+          
+        </div>
+      )}
+    </div>
+  );
+};
+
+// ==========================================
+// VIEW 2.5: SEARCH RESULTS
+// ==========================================
+const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, onBack }) => {
+  const age = parseInt(searchParams.age) || 0;
+  const income = parseInt(searchParams.income) || 0;
+  
+  let filteredSchemes = schemesData.filter(s => {
+    const matchAge = age >= s.eligibility.minAge && age <= s.eligibility.maxAge;
+    const matchIncome = income <= s.eligibility.maxIncome;
+    const matchCategory = searchParams.category ? s.category === searchParams.category : true;
+    return matchAge && matchIncome && matchCategory;
+  });
+
+  return (
+    <div className="home-view">
+      <header className="home-header">
+        <div className="container header-content">
+          <div className="logo" style={{ cursor: 'pointer' }} onClick={onBack}>
+            <Sparkles size={32} color="#dc2626" />
+            <div>
+              SaarthiAI
+              <span className="logo-sub">Your Guide to Government Schemes</span>
+            </div>
+          </div>
+          
+          <nav className="nav-links">
+            <a onClick={onBack} style={{ cursor: 'pointer' }}>Home</a>
+            <a href="#schemes" className="active">Results</a>
+            <a onClick={onLogout} style={{ cursor: 'pointer', color: '#dc2626' }}>Logout</a>
+          </nav>
+          
+          <div className="header-actions">
+            <button className="btn btn-primary" onClick={onOpenChat}>
+              <MessageSquare size={18}/> Ask AI Assistant
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <section className="section" style={{ background: 'var(--glass-bg)', minHeight: '80vh', paddingTop: '8rem' }}>
+        <div className="container">
+          <div className="schemes-header">
+            <div>
+              <a onClick={onBack} style={{ color: '#64748b', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', textDecoration: 'none', fontWeight: 600 }}>
+                <ChevronLeft size={16}/> Back to Search
+              </a>
+              <h2 style={{ fontSize: '2rem', fontWeight: 800 }}>Top Recommendations For You</h2>
+              <p style={{ color: '#64748b', marginTop: '0.5rem' }}>Found {filteredSchemes.length} schemes for Category: {searchParams.category}, Age: {searchParams.age}, Income: ₹{searchParams.income}</p>
+            </div>
+          </div>
+          
+          <div className="schemes-grid">
+            {filteredSchemes.length > 0 ? filteredSchemes.map(scheme => {
+              const tagClass = scheme.category === 'student' ? 'tag-student' : scheme.category === 'farmer' ? 'tag-farmer' : 'tag-women';
+              const iconClass = scheme.category === 'student' ? 'icon-green' : scheme.category === 'farmer' ? 'icon-blue' : 'icon-purple';
+
+              return (
+                <div key={scheme.id} className="scheme-card">
+                  <div className="card-top">
+                    <div className={`card-icon ${iconClass}`}><scheme.icon size={24} /></div>
+                    <div className={`tag ${tagClass}`}>{scheme.target}</div>
+                  </div>
+                  <h3 className="card-title">{scheme.title}</h3>
+                  <p className="card-desc">{scheme.description}</p>
+                  
+                  <div style={{ background: '#fef2f2', padding: '0.75rem', borderRadius: '8px', fontSize: '0.85rem', color: '#dc2626', marginBottom: '1.5rem', borderLeft: '3px solid #dc2626' }}>
+                    ⭐ <strong>High Match:</strong> Based on your input
+                  </div>
+
+                  <div className="card-bottom">
+                    <div>
+                      <div className="benefit-label">Benefit</div>
+                      <div className="benefit-amount">{scheme.benefit}</div>
+                    </div>
+                    <button className="btn btn-primary" onClick={() => onViewDetails(scheme)}>
+                      View Details →
+                    </button>
+                  </div>
+                </div>
+              );
+            }) : (
+              <div style={{ textAlign: 'center', padding: '3rem', width: '100%', gridColumn: '1 / -1', background: 'white', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                <Search size={48} color="#94a3b8" style={{ margin: '0 auto 1rem auto' }} />
+                <h3>No schemes found</h3>
+                <p style={{ color: '#64748b' }}>Try adjusting your search criteria to find more schemes.</p>
+              </div>
+            )}
+          </div>
+        </div>
+      </section>
+
+      <footer className="footer">
+        <div className="container">
+          <div className="copyright">© 2026 SaarthiAI. All rights reserved.</div>
+        </div>
+      </footer>
     </div>
   );
 };
@@ -550,9 +781,10 @@ const ChatbotView = ({ onBack }) => {
 // MAIN APP ROUTER
 // ==========================================
 export default function App() {
-  const [currentView, setCurrentView] = useState('auth'); // 'auth', 'home', 'details', 'chat'
+  const [currentView, setCurrentView] = useState('auth'); // 'auth', 'home', 'details', 'chat', 'search'
   const [userProfile, setUserProfile] = useState(null);
   const [selectedScheme, setSelectedScheme] = useState(null);
+  const [searchParams, setSearchParams] = useState(null);
 
   React.useEffect(() => {
     // Check local storage for existing session
@@ -582,8 +814,9 @@ export default function App() {
   return (
     <div style={{ scrollBehavior: 'smooth' }}>
       {currentView === 'auth' && <AuthView onComplete={handleAuthComplete} />}
-      {currentView === 'home' && <HomeView userProfile={userProfile} onViewDetails={handleViewDetails} onOpenChat={() => setCurrentView('chat')} onLogout={handleLogout} />}
-      {currentView === 'details' && <SchemeDetailsView scheme={selectedScheme} onBack={() => setCurrentView('home')} />}
+      {currentView === 'home' && <HomeView userProfile={userProfile} onViewDetails={handleViewDetails} onOpenChat={() => setCurrentView('chat')} onLogout={handleLogout} onSearch={(params) => { setSearchParams(params); setCurrentView('search'); }} />}
+      {currentView === 'search' && <SearchResultsView searchParams={searchParams} onViewDetails={handleViewDetails} onOpenChat={() => setCurrentView('chat')} onLogout={handleLogout} onBack={() => setCurrentView('home')} />}
+      {currentView === 'details' && <SchemeDetailsView scheme={selectedScheme} onBack={() => setCurrentView(searchParams ? 'search' : 'home')} />}
       {currentView === 'chat' && <ChatbotView onBack={() => setCurrentView('home')} />}
     </div>
   );

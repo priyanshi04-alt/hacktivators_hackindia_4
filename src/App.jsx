@@ -8,6 +8,10 @@ import { schemesData } from './data/SchemesData';
 import logoImg from './assets/yojnasetu_logo.png';
 import successImg from './assets/scheme_success.png';
 import supportImg from './assets/support_character.png';
+import farmerBanner from './assets/farmer_banner.png';
+import healthBanner from './assets/health_banner.png';
+import businessBanner from './assets/business_banner.png';
+import studentBanner from './assets/student_banner.png';
 
 // ==========================================
 // VIEW 1: AUTH (Login / Signup)
@@ -943,21 +947,30 @@ const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, 
     return matchAge && matchIncome && matchCategory && matchCaste && matchState;
   });
 
+  const getBanner = (scheme) => {
+    const cat = (scheme.category || '').toLowerCase();
+    const target = (scheme.target || '').toLowerCase();
+    if (cat === 'farmer' || target.includes('agri') || target.includes('farmer') || target.includes('rural')) return farmerBanner;
+    if (cat === 'student' || target.includes('educ') || target.includes('learn') || target.includes('school')) return studentBanner;
+    if (cat === 'business' || target.includes('busin') || target.includes('entrep') || target.includes('industry')) return businessBanner;
+    if (cat === 'health' || target.includes('health') || target.includes('well') || target.includes('medical')) return healthBanner;
+    return studentBanner; // Fallback
+  };
+
   return (
-    <div className="home-view">
+    <div className="search-view">
       <header className="home-header">
         <div className="container header-content">
-          <div className="logo" style={{ cursor: 'pointer' }} onClick={onBack}>
+          <div className="logo" onClick={onBack} style={{ cursor: 'pointer' }}>
             <img src={logoImg} alt="YojnaSetu Logo" style={{ height: '56px', width: 'auto', objectFit: 'contain', marginRight: '12px' }} />
             <div>
               YojnaSetu
               <span className="logo-sub">Your Guide to Government Schemes</span>
             </div>
           </div>
-          
           <nav className="nav-links">
             <a onClick={onBack} style={{ cursor: 'pointer' }}>Home</a>
-            <a href="#schemes" className="active">Results</a>
+            <a href="#" className="active">Results</a>
           </nav>
           
           <div className="header-actions">
@@ -967,46 +980,42 @@ const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, 
       </header>
 
       <section className="section" style={{ background: 'var(--glass-bg)', minHeight: '80vh', paddingTop: '8rem' }}>
-        <div className="container">
+        <div className="container" style={{ maxWidth: '1000px' }}>
           <div className="schemes-header">
             <div>
               <a onClick={onBack} style={{ color: '#64748b', cursor: 'pointer', display: 'inline-flex', alignItems: 'center', gap: '0.5rem', marginBottom: '1rem', textDecoration: 'none', fontWeight: 600 }}>
                 <ChevronLeft size={16}/> Back to Search
               </a>
-              <h2 style={{ fontSize: '2rem', fontWeight: 800 }}>Top Recommendations For You</h2>
+              <h2 style={{ fontSize: '2.2rem', fontWeight: 800 }}>Top Recommendations For You</h2>
               <p style={{ color: '#64748b', marginTop: '0.5rem' }}>Found {filteredSchemes.length} schemes for Category: {searchParams.category}, Age: {searchParams.age}, Income: ₹{searchParams.income}</p>
             </div>
           </div>
           
-          <div className="schemes-grid">
+          <div className="recommendation-grid">
             {filteredSchemes.length > 0 ? filteredSchemes.map(scheme => {
-              const tagClass = scheme.category === 'student' ? 'tag-student' : scheme.category === 'farmer' ? 'tag-farmer' : 'tag-women';
-              const iconClass = scheme.category === 'student' ? 'icon-green' : scheme.category === 'farmer' ? 'icon-blue' : 'icon-purple';
-
+              const bannerImg = getBanner(scheme);
+              
               return (
-                <div key={scheme.id} className="scheme-card">
-                  <div className="card-top">
-                    <div className={`card-icon ${iconClass}`}><scheme.icon size={24} /></div>
-                    <div className={`tag ${tagClass}`}>{scheme.target}</div>
+                <div key={scheme.id} className="recommendation-card">
+                  <div className="rec-content">
+                    <div className={`rec-tag ${scheme.category}`}>{scheme.target.split(',')[0]}</div>
+                    <h3 className="rec-title">{scheme.title}</h3>
+                    <div className="rec-actions">
+                      <button className="btn btn-primary" style={{ padding: '1rem 2.5rem', fontWeight: 700, fontSize: '1.1rem', width: '100%' }} onClick={() => onViewDetails(scheme)}>
+                        View Details & AI Guide
+                      </button>
+                    </div>
                   </div>
-                  <h3 className="card-title">{scheme.title}</h3>
-                  <p className="card-desc">{scheme.description}</p>
-                  
-                  <div style={{ background: '#fef2f2', padding: '0.75rem', borderRadius: '8px', fontSize: '0.85rem', color: '#dc2626', marginBottom: '1.5rem', borderLeft: '3px solid #dc2626' }}>
-                    ⭐ <strong>High Match:</strong> Based on your input
-                  </div>
-
-                  <div className="card-bottom" style={{ display: 'block' }}>
-                    <button className="btn btn-primary" style={{ width: '100%', padding: '0.8rem' }} onClick={() => onViewDetails(scheme)}>
-                      View Details →
-                    </button>
+                  <div className="rec-illustration">
+                    <div className="rec-badge"><scheme.icon size={28} /></div>
+                    <img src={bannerImg} alt="Category Banner" />
                   </div>
                 </div>
               );
             }) : (
-              <div style={{ textAlign: 'center', padding: '3rem', width: '100%', gridColumn: '1 / -1', background: 'white', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-                <Search size={48} color="#94a3b8" style={{ margin: '0 auto 1rem auto' }} />
-                <h3>No schemes found</h3>
+              <div style={{ textAlign: 'center', padding: '4rem', width: '100%', background: 'white', borderRadius: '20px', border: '1px solid #e2e8f0' }}>
+                <Search size={64} color="#94a3b8" style={{ margin: '0 auto 1.5rem auto', opacity: 0.5 }} />
+                <h3 style={{ fontSize: '1.5rem', fontWeight: 700 }}>No schemes found</h3>
                 <p style={{ color: '#64748b' }}>Try adjusting your search criteria to find more schemes.</p>
               </div>
             )}

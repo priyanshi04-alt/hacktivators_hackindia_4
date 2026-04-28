@@ -17,7 +17,7 @@ const AuthView = ({ onComplete }) => {
     e.preventDefault();
     if (isLogin) {
       // Simulate quick login
-      const savedAccount = JSON.parse(localStorage.getItem('saarthiAccount'));
+      const savedAccount = JSON.parse(localStorage.getItem('yojnasetuAccount'));
       if (savedAccount) {
         onComplete(savedAccount);
       } else {
@@ -30,7 +30,7 @@ const AuthView = ({ onComplete }) => {
     if (step < 3) {
       setStep(step + 1);
     } else {
-      localStorage.setItem('saarthiAccount', JSON.stringify(formData));
+      localStorage.setItem('yojnasetuAccount', JSON.stringify(formData));
       onComplete(formData);
     }
   };
@@ -111,8 +111,11 @@ const AuthView = ({ onComplete }) => {
                   <label>Your State</label>
                   <select className="auth-input" required value={formData.state} onChange={e => setFormData({...formData, state: e.target.value})}>
                     <option value="">Select State</option>
-                    <option value="Delhi">Delhi</option>
-                    <option value="Maharashtra">Maharashtra</option>
+                    <option value="Puducherry">Puducherry</option>
+                    <option value="Haryana">Haryana</option>
+                    <option value="Punjab">Punjab</option>
+                    <option value="Himachal Pradesh">Himachal Pradesh</option>
+                    <option value="West Bengal">West Bengal</option>
                   </select>
                 </div>
               </div>
@@ -131,7 +134,6 @@ const AuthView = ({ onComplete }) => {
                     <option value="student">Student</option>
                     <option value="farmer">Farmer</option>
                     <option value="health">Health</option>
-                    <option value="women">Women</option>
                     <option value="business">Business</option>
                   </select>
                 </div>
@@ -214,7 +216,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
     const matchCategory = userProfile.category ? s.category === userProfile.category : true;
     
     // Caste Filtering Logic
-    const userCaste = userProfile.caste || '';
+    const userCaste = formData.caste || '';
     let matchCaste = true;
     if (userCaste) {
       const text = (s.title + " " + s.description).toLowerCase();
@@ -227,8 +229,17 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
         if (isSCSTScheme) matchCaste = false;
       }
     }
+
+    const userState = formData.state || '';
+    let matchState = true;
+    if (userState) {
+      const schemeText = JSON.stringify(s).toLowerCase();
+      const allStates = ['andhra pradesh', 'arunachal pradesh', 'assam', 'bihar', 'chhattisgarh', 'goa', 'gujarat', 'haryana', 'himachal pradesh', 'jharkhand', 'karnataka', 'kerala', 'madhya pradesh', 'maharashtra', 'manipur', 'meghalaya', 'mizoram', 'nagaland', 'odisha', 'punjab', 'rajasthan', 'sikkim', 'tamil nadu', 'telangana', 'tripura', 'uttar pradesh', 'uttarakhand', 'west bengal', 'puducherry', 'delhi', 'chandigarh'];
+      const mentionsAnyState = allStates.some(st => schemeText.includes(st));
+      matchState = !mentionsAnyState || schemeText.includes(userState.toLowerCase());
+    }
     
-    return matchAge && matchIncome && matchCategory && matchCaste;
+    return matchAge && matchIncome && matchCategory && matchCaste && matchState;
   });
 
   const displaySchemes = filteredSchemes.slice(0, 6);
@@ -240,7 +251,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
           <div className="logo">
             <Sparkles size={32} color="#dc2626" />
             <div>
-              SaarthiAI
+              YojnaSetu
               <span className="logo-sub">Your Guide to Government Schemes</span>
             </div>
           </div>
@@ -289,7 +300,6 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
                 <option value="student">Student</option>
                 <option value="farmer">Farmer</option>
                 <option value="health">Health</option>
-                <option value="women">Women</option>
                 <option value="business">Business</option>
               </select>
             </div>
@@ -301,6 +311,16 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
                 <option value="SC">SC</option>
                 <option value="ST">ST</option>
                 <option value="EWS">EWS</option>
+              </select>
+            </div>
+            <div className="input-box">
+              <select required value={formData.state} onChange={e => setFormData({...formData, state: e.target.value})} style={{width: '110px'}}>
+                <option value="" disabled>State</option>
+                <option value="Puducherry">Puducherry</option>
+                <option value="Haryana">Haryana</option>
+                <option value="Punjab">Punjab</option>
+                <option value="Himachal Pradesh">Himachal Pradesh</option>
+                <option value="West Bengal">West Bengal</option>
               </select>
             </div>
             <div className="input-box">
@@ -318,7 +338,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
 
       <section className="section">
         <div className="container">
-          <h2 className="section-title">Why Choose SaarthiAI?</h2>
+          <h2 className="section-title">Why Choose YojnaSetu?</h2>
           <div className="features-grid">
             <div className="feature-card">
               <div className="feature-icon icon-green"><Sparkles size={32} /></div>
@@ -431,7 +451,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
       
       <footer className="footer">
         <div className="container">
-          <div className="copyright">© 2026 SaarthiAI. All rights reserved.</div>
+          <div className="copyright">© 2026 YojnaSetu. All rights reserved.</div>
         </div>
       </footer>
     </div>
@@ -441,7 +461,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
 // ==========================================
 // VIEW 3: SCHEME DETAILS (Article Card + AI Modes)
 // ==========================================
-const SchemeDetailsView = ({ scheme, onBack, onOpenChat }) => {
+const SchemeDetailsView = ({ scheme, userState, onBack, onOpenChat }) => {
   const [aiExplanation, setAiExplanation] = useState(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [language, setLanguage] = useState('en');
@@ -567,7 +587,7 @@ const SchemeDetailsView = ({ scheme, onBack, onOpenChat }) => {
               <button className="btn" style={{ background: '#ecfdf5', color: '#059669', border: '1px solid #10b981', flex: 1, display: 'flex', justifyContent: 'center', gap: '0.5rem' }} onClick={() => window.open(`https://www.google.com/search?q=Apply+online+for+${encodeURIComponent(scheme.title)}+official+website`, '_blank')}>
                 <Clock size={18} /> Online
               </button>
-              <button className="btn" style={{ background: '#eff6ff', color: '#2563eb', border: '1px solid #3b82f6', flex: 1, display: 'flex', justifyContent: 'center', gap: '0.5rem' }} onClick={() => window.open(`https://www.google.com/maps/search/nearest+government+office+for+${encodeURIComponent(scheme.title)}`, '_blank')}>
+              <button className="btn" style={{ background: '#eff6ff', color: '#2563eb', border: '1px solid #3b82f6', flex: 1, display: 'flex', justifyContent: 'center', gap: '0.5rem' }} onClick={() => window.open(`https://www.google.com/maps/search/nearest+government+office+for+${encodeURIComponent(scheme.title)}${userState ? '+in+' + encodeURIComponent(userState) : ''}`, '_blank')}>
                 <MapPin size={18} /> Offline
               </button>
             </div>
@@ -667,7 +687,7 @@ const ChatbotView = ({ onBack, initialQuery }) => {
     <div className="chat-view">
       <header className="chat-header">
         <div className="chat-logo" style={{ cursor: 'pointer' }} onClick={onBack}>
-          <Sparkles /> SaarthiAI
+          <Sparkles /> YojnaSetu
         </div>
         <button className="btn" style={{ background: 'rgba(255,255,255,0.5)', color: '#1e293b' }} onClick={onBack}>
           Exit Chat
@@ -682,7 +702,7 @@ const ChatbotView = ({ onBack, initialQuery }) => {
           </h1>
           
           <p style={{ fontSize: '1.25rem', color: '#475569', margin: '0 auto 2rem auto', maxWidth: '600px' }}>
-            SaarthiAI lets you find fully-funded government schemes in minutes with just your words.<br/>
+            YojnaSetu lets you find fully-funded government schemes in minutes with just your words.<br/>
             No complex jargon necessary.
           </p>
 
@@ -713,7 +733,7 @@ const ChatbotView = ({ onBack, initialQuery }) => {
           
           <div style={{ flex: 1, overflowY: 'auto', padding: '2rem 0', display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             <div style={{ alignSelf: 'flex-start', background: 'white', padding: '1rem 1.5rem', borderRadius: '20px', borderBottomLeftRadius: '4px', maxWidth: '80%', boxShadow: '0 4px 15px rgba(0,0,0,0.05)' }}>
-              Hi! I am SaarthiAI. I can help you find government schemes in simple words. What are you looking for today?
+              Hi! I am YojnaSetu. I can help you find government schemes in simple words. What are you looking for today?
             </div>
 
             {messages.map((msg, idx) => (
@@ -790,8 +810,17 @@ const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, 
         if (isSCSTScheme) matchCaste = false;
       }
     }
+
+    const userState = searchParams.state || '';
+    let matchState = true;
+    if (userState) {
+      const schemeText = JSON.stringify(s).toLowerCase();
+      const allStates = ['andhra pradesh', 'arunachal pradesh', 'assam', 'bihar', 'chhattisgarh', 'goa', 'gujarat', 'haryana', 'himachal pradesh', 'jharkhand', 'karnataka', 'kerala', 'madhya pradesh', 'maharashtra', 'manipur', 'meghalaya', 'mizoram', 'nagaland', 'odisha', 'punjab', 'rajasthan', 'sikkim', 'tamil nadu', 'telangana', 'tripura', 'uttar pradesh', 'uttarakhand', 'west bengal', 'puducherry', 'delhi', 'chandigarh'];
+      const mentionsAnyState = allStates.some(st => schemeText.includes(st));
+      matchState = !mentionsAnyState || schemeText.includes(userState.toLowerCase());
+    }
     
-    return matchAge && matchIncome && matchCategory && matchCaste;
+    return matchAge && matchIncome && matchCategory && matchCaste && matchState;
   });
 
   return (
@@ -801,7 +830,7 @@ const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, 
           <div className="logo" style={{ cursor: 'pointer' }} onClick={onBack}>
             <Sparkles size={32} color="#dc2626" />
             <div>
-              SaarthiAI
+              YojnaSetu
               <span className="logo-sub">Your Guide to Government Schemes</span>
             </div>
           </div>
@@ -871,7 +900,7 @@ const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, 
 
       <footer className="footer">
         <div className="container">
-          <div className="copyright">© 2026 SaarthiAI. All rights reserved.</div>
+          <div className="copyright">© 2026 YojnaSetu. All rights reserved.</div>
         </div>
       </footer>
     </div>
@@ -890,7 +919,7 @@ export default function App() {
 
   React.useEffect(() => {
     // Check local storage for existing session
-    const activeSession = localStorage.getItem('saarthiSession');
+    const activeSession = localStorage.getItem('yojnasetuSession');
     if (activeSession) {
       setUserProfile(JSON.parse(activeSession));
     }
@@ -898,7 +927,7 @@ export default function App() {
 
   const handleAuthComplete = (profile) => {
     setUserProfile(profile);
-    localStorage.setItem('saarthiSession', JSON.stringify(profile));
+    localStorage.setItem('yojnasetuSession', JSON.stringify(profile));
     setCurrentView('home');
   };
 
@@ -908,7 +937,7 @@ export default function App() {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem('saarthiSession');
+    localStorage.removeItem('yojnasetuSession');
     setUserProfile(null);
     setCurrentView('home');
   };
@@ -918,7 +947,7 @@ export default function App() {
       {currentView === 'auth' && <AuthView onComplete={handleAuthComplete} />}
       {currentView === 'home' && <HomeView userProfile={userProfile} onViewDetails={handleViewDetails} onOpenChat={() => setCurrentView('chat')} onLogout={handleLogout} onLogin={() => setCurrentView('auth')} onSearch={(params) => { setSearchParams(params); setCurrentView('search'); }} />}
       {currentView === 'search' && <SearchResultsView searchParams={searchParams} onViewDetails={handleViewDetails} onOpenChat={() => setCurrentView('chat')} onLogout={handleLogout} onBack={() => setCurrentView('home')} />}
-      {currentView === 'details' && <SchemeDetailsView scheme={selectedScheme} onBack={() => setCurrentView(searchParams ? 'search' : 'home')} onOpenChat={(query) => { setInitialChatQuery(query); setCurrentView('chat'); }} />}
+      {currentView === 'details' && <SchemeDetailsView scheme={selectedScheme} userState={searchParams?.state || userProfile?.state || ''} onBack={() => setCurrentView(searchParams ? 'search' : 'home')} onOpenChat={(query) => { setInitialChatQuery(query); setCurrentView('chat'); }} />}
       {currentView === 'chat' && <ChatbotView onBack={() => { setCurrentView('home'); setInitialChatQuery(''); }} initialQuery={initialChatQuery} />}
 
       {currentView !== 'chat' && currentView !== 'auth' && (

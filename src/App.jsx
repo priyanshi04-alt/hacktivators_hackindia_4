@@ -11,7 +11,7 @@ import { schemesData } from './data/SchemesData';
 const AuthView = ({ onComplete }) => {
   const [step, setStep] = useState(1);
   const [isLogin, setIsLogin] = useState(false);
-  const [formData, setFormData] = useState({ age: '', income: '', category: '', state: '', password: '' });
+  const [formData, setFormData] = useState({ age: '', income: '', occupation: '', category: '', state: '', password: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -125,12 +125,22 @@ const AuthView = ({ onComplete }) => {
                   <input type="number" className="auth-input" placeholder="e.g. 22" required value={formData.age} onChange={e => setFormData({...formData, age: e.target.value})} />
                 </div>
                 <div className="auth-form-group">
-                  <label>Category</label>
-                  <select className="auth-input" required value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})}>
-                    <option value="">Select Category</option>
+                  <label>Occupation</label>
+                  <select className="auth-input" required value={formData.occupation} onChange={e => setFormData({...formData, occupation: e.target.value})}>
+                    <option value="">Select Occupation</option>
                     <option value="student">Student</option>
                     <option value="farmer">Farmer</option>
                     <option value="women">Women</option>
+                  </select>
+                </div>
+                <div className="auth-form-group full">
+                  <label>Category</label>
+                  <select className="auth-input" required value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})}>
+                    <option value="">Select Category</option>
+                    <option value="General">General</option>
+                    <option value="SC">SC</option>
+                    <option value="ST">ST</option>
+                    <option value="OBC">OBC</option>
                   </select>
                 </div>
                 <div className="auth-form-group full">
@@ -146,6 +156,7 @@ const AuthView = ({ onComplete }) => {
                 <div style={{ background: '#f8fafc', padding: '1.5rem', borderRadius: '8px', border: '1px solid #e2e8f0' }}>
                   <p><strong>Age:</strong> {formData.age}</p>
                   <p><strong>Income:</strong> ₹{formData.income}</p>
+                  <p><strong>Occupation:</strong> {formData.occupation}</p>
                   <p><strong>Category:</strong> {formData.category}</p>
                   <p><strong>State:</strong> {formData.state}</p>
                 </div>
@@ -167,6 +178,7 @@ const AuthView = ({ onComplete }) => {
 // ==========================================
 const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onSearch }) => {
   const [formData, setFormData] = useState({ 
+    occupation: userProfile?.occupation || '', 
     category: userProfile?.category || '', 
     age: userProfile?.age || '', 
     income: userProfile?.income || '', 
@@ -185,8 +197,9 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onSearch }
     if (!userProfile) return true;
     const matchAge = age >= s.eligibility.minAge && age <= s.eligibility.maxAge;
     const matchIncome = income <= s.eligibility.maxIncome;
-    const matchCategory = userProfile.category ? s.category === userProfile.category : true;
-    return matchAge && matchIncome && matchCategory;
+    const matchOccupation = userProfile.occupation ? s.occupation === userProfile.occupation : true;
+    const matchCategory = userProfile.category ? s.category.includes(userProfile.category) : true;
+    return matchAge && matchIncome && matchOccupation && matchCategory;
   });
 
   const displaySchemes = filteredSchemes.slice(0, 6);
@@ -240,23 +253,32 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onSearch }
             <Sparkles size={20} color="#dc2626" /> Check Schemes For You
           </div>
           
-          <form className="inline-form" onSubmit={handleSearchSubmit}>
-            <div className="input-box">
-              <select required value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})}>
-                <option value="" disabled>Select Category</option>
+          <form className="inline-form" style={{ flexWrap: 'wrap', gap: '0.5rem' }} onSubmit={handleSearchSubmit}>
+            <div className="input-box" style={{ flex: '1 1 auto' }}>
+              <select required value={formData.occupation} onChange={e => setFormData({...formData, occupation: e.target.value})}>
+                <option value="" disabled>Select Occupation</option>
                 <option value="student">Student</option>
                 <option value="farmer">Farmer</option>
                 <option value="health">Health</option>
                 <option value="women">Women</option>
               </select>
             </div>
-            <div className="input-box">
+            <div className="input-box" style={{ flex: '1 1 auto', maxWidth: '140px' }}>
+              <select required value={formData.category} onChange={e => setFormData({...formData, category: e.target.value})}>
+                <option value="" disabled>Category</option>
+                <option value="General">General</option>
+                <option value="SC">SC</option>
+                <option value="ST">ST</option>
+                <option value="OBC">OBC</option>
+              </select>
+            </div>
+            <div className="input-box" style={{ flex: '1 1 auto', maxWidth: '100px' }}>
               <input type="number" required placeholder="Your Age" value={formData.age} onChange={e => setFormData({...formData, age: e.target.value})} />
             </div>
-            <div className="input-box">
+            <div className="input-box" style={{ flex: '1 1 auto', maxWidth: '140px' }}>
               <input type="number" required placeholder="Annual Income" value={formData.income} onChange={e => setFormData({...formData, income: e.target.value})} />
             </div>
-            <div className="input-box">
+            <div className="input-box" style={{ flex: '1 1 auto' }}>
               <select required value={formData.state} onChange={e => setFormData({...formData, state: e.target.value})}>
                 <option value="" disabled>Your State</option>
                 <option value="Delhi">Delhi</option>
@@ -307,8 +329,8 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onSearch }
           
           <div className="schemes-grid">
             {displaySchemes.map(scheme => {
-              const tagClass = scheme.category === 'student' ? 'tag-student' : scheme.category === 'farmer' ? 'tag-farmer' : 'tag-women';
-              const iconClass = scheme.category === 'student' ? 'icon-green' : scheme.category === 'farmer' ? 'icon-blue' : 'icon-purple';
+              const tagClass = scheme.occupation === 'student' ? 'tag-student' : scheme.occupation === 'farmer' ? 'tag-farmer' : 'tag-women';
+              const iconClass = scheme.occupation === 'student' ? 'icon-green' : scheme.occupation === 'farmer' ? 'icon-blue' : 'icon-purple';
 
               return (
                 <div key={scheme.id} className="scheme-card">
@@ -686,8 +708,9 @@ const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, 
   let filteredSchemes = schemesData.filter(s => {
     const matchAge = age >= s.eligibility.minAge && age <= s.eligibility.maxAge;
     const matchIncome = income <= s.eligibility.maxIncome;
-    const matchCategory = searchParams.category ? s.category === searchParams.category : true;
-    return matchAge && matchIncome && matchCategory;
+    const matchOccupation = searchParams.occupation ? s.occupation === searchParams.occupation : true;
+    const matchCategory = searchParams.category ? s.category.includes(searchParams.category) : true;
+    return matchAge && matchIncome && matchOccupation && matchCategory;
   });
 
   return (
@@ -724,14 +747,14 @@ const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, 
                 <ChevronLeft size={16}/> Back to Search
               </a>
               <h2 style={{ fontSize: '2rem', fontWeight: 800 }}>Top Recommendations For You</h2>
-              <p style={{ color: '#64748b', marginTop: '0.5rem' }}>Found {filteredSchemes.length} schemes for Category: {searchParams.category}, Age: {searchParams.age}, Income: ₹{searchParams.income}</p>
+              <p style={{ color: '#64748b', marginTop: '0.5rem' }}>Found {filteredSchemes.length} schemes for Occupation: {searchParams.occupation}, Category: {searchParams.category}, Age: {searchParams.age}, Income: ₹{searchParams.income}</p>
             </div>
           </div>
           
           <div className="schemes-grid">
             {filteredSchemes.length > 0 ? filteredSchemes.map(scheme => {
-              const tagClass = scheme.category === 'student' ? 'tag-student' : scheme.category === 'farmer' ? 'tag-farmer' : 'tag-women';
-              const iconClass = scheme.category === 'student' ? 'icon-green' : scheme.category === 'farmer' ? 'icon-blue' : 'icon-purple';
+              const tagClass = scheme.occupation === 'student' ? 'tag-student' : scheme.occupation === 'farmer' ? 'tag-farmer' : 'tag-women';
+              const iconClass = scheme.occupation === 'student' ? 'icon-green' : scheme.occupation === 'farmer' ? 'icon-blue' : 'icon-purple';
 
               return (
                 <div key={scheme.id} className="scheme-card">

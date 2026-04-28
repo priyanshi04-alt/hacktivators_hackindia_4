@@ -7,7 +7,8 @@ export const schemesData = [
   "benefit": "\u20b9 1,00,000, in two installments of \u20b9 ...",
   "target": "Agriculture,Rural & Environment, Social welfare & Empowerment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -87,7 +88,8 @@ export const schemesData = [
   "benefit": "Financial Assistance : Limit of fundi...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -143,7 +145,8 @@ export const schemesData = [
   "benefit": "Funeral Assistance: \u20b93,000 payable in...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -211,7 +214,8 @@ export const schemesData = [
   "benefit": "Enlistment of the Unit for participat...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -271,7 +275,8 @@ export const schemesData = [
   "benefit": "Financial Assistance of \u20b910,000/- for...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -331,7 +336,8 @@ export const schemesData = [
   "benefit": "An incentive of \u20b92,00,000/- is provid...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -391,7 +397,8 @@ export const schemesData = [
   "benefit": "20% of Fixed Capital Investment on Pl...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -461,7 +468,8 @@ export const schemesData = [
   "benefit": "Loan Limit Loan amount of \u20b9 50,00,000...",
   "target": "Women and Child",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -535,7 +543,8 @@ export const schemesData = [
   "benefit": "Tool kits can given free of cost to t...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -603,7 +612,8 @@ export const schemesData = [
   "benefit": "Pradhan Mantri Suraksha Bima Yojana (...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -667,7 +677,8 @@ export const schemesData = [
   "benefit": "Classes 6th to 8th Boys: \u20b920/- per mo...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -727,7 +738,8 @@ export const schemesData = [
   "benefit": "The fee for special coaching for admi...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -785,7 +797,8 @@ export const schemesData = [
   "benefit": "Group A: 60% Group B: 70% Group C: 80...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -857,7 +870,8 @@ export const schemesData = [
   "benefit": "Group A, B, C & D areas: 60% for a pe...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -929,7 +943,8 @@ export const schemesData = [
   "benefit": "Pattern of Assistance: 50%, subject t...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1001,7 +1016,8 @@ export const schemesData = [
   "benefit": "Group-'A\u2019 and \u2018B' areas: 50%, subject...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1081,7 +1097,8 @@ export const schemesData = [
   "benefit": "Group A and B: 50%, Group C and D: 60...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1153,7 +1170,8 @@ export const schemesData = [
   "benefit": "Group A: 7",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1229,7 +1247,8 @@ export const schemesData = [
   "benefit": "50%, subject to a maximum of \u20b9 7,50,0...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1301,7 +1320,8 @@ export const schemesData = [
   "benefit": "Pattern of Assistance: Assistance at ...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1373,7 +1393,8 @@ export const schemesData = [
   "benefit": "An eligible unit will be entitled to ...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1445,7 +1466,8 @@ export const schemesData = [
   "benefit": "50% subject to a maximum of \u20b92,00,000...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1513,7 +1535,8 @@ export const schemesData = [
   "benefit": "\u20b9 2,00,00,000/- to 50,00,000/- per an...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1575,7 +1598,8 @@ export const schemesData = [
   "benefit": "An eligible textile sector enterprise...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1645,7 +1669,8 @@ export const schemesData = [
   "benefit": "A reimbursement of 25%  subject to a ...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1715,7 +1740,8 @@ export const schemesData = [
   "benefit": "100% waiver of electricity duty for 5...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1783,7 +1809,8 @@ export const schemesData = [
   "benefit": "100% waiver of fees for conversion an...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1847,7 +1874,8 @@ export const schemesData = [
   "benefit": "Under the scheme, Rs",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1921,7 +1949,8 @@ export const schemesData = [
   "benefit": "Skill Training Selected candidates ar...",
   "target": "Skills & Employment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -1989,7 +2018,8 @@ export const schemesData = [
   "benefit": "Trainees receive a stipend of \u20b92,500 ...",
   "target": "Skills & Employment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2051,7 +2081,8 @@ export const schemesData = [
   "benefit": "Course Fee: as Prescribed by the Trai...",
   "target": "Skills & Employment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2115,7 +2146,8 @@ export const schemesData = [
   "benefit": "50% subsidy subject to a maximum of \u20b9...",
   "target": "Agriculture,Rural & Environment, Banking,Financial Services and Insurance",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2189,7 +2221,8 @@ export const schemesData = [
   "benefit": "Reimbursement of 50% of the fees paid...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2269,7 +2302,8 @@ export const schemesData = [
   "benefit": "Assistance @ 50% subject to a maximum...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2351,7 +2385,8 @@ export const schemesData = [
   "benefit": "Assistance: 50%",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2433,7 +2468,8 @@ export const schemesData = [
   "benefit": "Back-ended investment subsidy to padd...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2501,7 +2537,8 @@ export const schemesData = [
   "benefit": "For Micro and Small Enterprises, a 40...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2583,7 +2620,8 @@ export const schemesData = [
   "benefit": "5% Additional Incentive on the Existi...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2657,7 +2695,8 @@ export const schemesData = [
   "benefit": "Subsidy on the investments made on pl...",
   "target": "Business & Entrepreneurship, Science, IT & Communications",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2725,7 +2764,8 @@ export const schemesData = [
   "benefit": "A capital investment subsidy at the r...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2797,7 +2837,8 @@ export const schemesData = [
   "benefit": "For Scheduled Caste/ Scheduled Tribe/...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2875,7 +2916,8 @@ export const schemesData = [
   "benefit": "Participants receive a daily allowanc...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -2941,7 +2983,8 @@ export const schemesData = [
   "benefit": "50% subsidy subject to a maximum of \u20b9...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3015,7 +3058,8 @@ export const schemesData = [
   "benefit": "For Craftsperson Remuneration: \u20b93,000...",
   "target": "Skills & Employment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3085,7 +3129,8 @@ export const schemesData = [
   "benefit": "Subsidy: Wage/Employment Subsidy of 2...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3167,7 +3212,8 @@ export const schemesData = [
   "benefit": "Wage/Employment Subsidy of 20% wage/s...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3237,7 +3283,8 @@ export const schemesData = [
   "benefit": "The entire expenditure towards the tr...",
   "target": "Business & Entrepreneurship, Skills & Employment",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3295,7 +3342,8 @@ export const schemesData = [
   "benefit": "Entrepreneurship training to prospect...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3349,7 +3397,8 @@ export const schemesData = [
   "benefit": "Travelling allowance to-and-fro 2nd c...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3413,7 +3462,8 @@ export const schemesData = [
   "benefit": "A financial grant for the reactivatio...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3487,7 +3537,8 @@ export const schemesData = [
   "benefit": "100 kgs",
   "target": "Agriculture,Rural & Environment, Social welfare & Empowerment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3555,7 +3606,8 @@ export const schemesData = [
   "benefit": "Subsidy: 50%",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3637,7 +3689,8 @@ export const schemesData = [
   "benefit": "50% subsidy with a cap of \u20b95,00,000/-...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3705,7 +3758,8 @@ export const schemesData = [
   "benefit": "Grants to Handicrafts Societies for c...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3765,7 +3819,8 @@ export const schemesData = [
   "benefit": "25% margin money, capped at \u20b925,00,00...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3819,7 +3874,8 @@ export const schemesData = [
   "benefit": "25% as margin money (restricted to \u20b95...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3883,7 +3939,8 @@ export const schemesData = [
   "benefit": "Grant of \u20b92,00,000 per year for five ...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -3941,7 +3998,8 @@ export const schemesData = [
   "benefit": "Grant of \u20b92,00,000 per annum for 5 ye...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4001,7 +4059,8 @@ export const schemesData = [
   "benefit": "15% subsidy on annual raw materials p...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4055,7 +4114,8 @@ export const schemesData = [
   "benefit": "Cash Award of \u20b92,00,000/- and a Citation",
   "target": "Business & Entrepreneurship, Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4113,7 +4173,8 @@ export const schemesData = [
   "benefit": "\u20b9 1,00,000 as immediate death relief ...",
   "target": "Agriculture,Rural & Environment, Social welfare & Empowerment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4185,7 +4246,8 @@ export const schemesData = [
   "benefit": "Stipend Higher Secondary / ITI and be...",
   "target": "Skills & Employment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4259,7 +4321,8 @@ export const schemesData = [
   "benefit": "30% subsidy, subject to a maximum of ...",
   "target": "Business & Entrepreneurship, Transport & Infrastructure",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4341,7 +4404,8 @@ export const schemesData = [
   "benefit": "25% subsidy subject to a maximum of \u20b9...",
   "target": "Business & Entrepreneurship, Transport & Infrastructure",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4423,7 +4487,8 @@ export const schemesData = [
   "benefit": "Cash Award of \u20b92,00,000/- and a Citation",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4481,7 +4546,8 @@ export const schemesData = [
   "benefit": "One-day training and awareness progra...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4559,7 +4625,8 @@ export const schemesData = [
   "benefit": "Laying of Demonstration Plot (LoDP): ...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4621,7 +4688,8 @@ export const schemesData = [
   "benefit": "Subsidy: Upto  25% of the annual inte...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4703,7 +4771,8 @@ export const schemesData = [
   "benefit": "For industry set up by SC/ST/Women en...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4779,7 +4848,8 @@ export const schemesData = [
   "benefit": "90% of the Training Expenditure is Gi...",
   "target": "Skills & Employment",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4839,7 +4909,8 @@ export const schemesData = [
   "benefit": "Assistance: 50% of Total Rent, Litera...",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4921,7 +4992,8 @@ export const schemesData = [
   "benefit": "A monthly grant of \u20b92,000/-",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -4991,7 +5063,8 @@ export const schemesData = [
   "benefit": "Cash Award of \u20b92,00,000/- and a Citation",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5047,7 +5120,8 @@ export const schemesData = [
   "benefit": "Cash Award of \u20b92,00,000/- and a Citation",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5101,7 +5175,8 @@ export const schemesData = [
   "benefit": "Cash Award of \u20b92,00,000/- and a Citation",
   "target": "Business & Entrepreneurship",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5163,7 +5238,8 @@ export const schemesData = [
   "benefit": "Cash Award of \u20b92,00,000/- and a Citation",
   "target": "Business & Entrepreneurship, Social welfare & Empowerment",
   icon: Briefcase,
-    "category": "business",
+    "occupation": "business",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5221,7 +5297,8 @@ export const schemesData = [
   "benefit": "Poly House: Naturally Ventilated syst...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5289,7 +5366,8 @@ export const schemesData = [
   "benefit": "A one-time revolving fund of \u20b92,00,000/-",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5361,7 +5439,8 @@ export const schemesData = [
   "benefit": "The scheme covers the coaching fees (...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5433,7 +5512,8 @@ export const schemesData = [
   "benefit": "Cash Incentives @ \u20b912,500/hectare",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5501,7 +5581,8 @@ export const schemesData = [
   "benefit": "50% subsidy subject to a maximum of \u20b9...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5581,7 +5662,8 @@ export const schemesData = [
   "benefit": "Nursery Premium for Raising Seed Mate...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5643,7 +5725,8 @@ export const schemesData = [
   "benefit": "Trainees will receive a stipend of \u20b91...",
   "target": "Skills & Employment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5699,7 +5782,8 @@ export const schemesData = [
   "benefit": "Institution-oriented training in trad...",
   "target": "Skills & Employment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5773,7 +5857,8 @@ export const schemesData = [
   "benefit": "Stipend of \u20b97,000/-",
   "target": "Skills & Employment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5835,7 +5920,8 @@ export const schemesData = [
   "benefit": "Cash Benefits- \u20b9 600/- per month",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5895,7 +5981,8 @@ export const schemesData = [
   "benefit": "Pension of \u20b92,000/- per month",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -5967,7 +6054,8 @@ export const schemesData = [
   "benefit": "Under this scheme, Social Security co...",
   "target": "Banking,Financial Services and Insurance, Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6041,7 +6129,8 @@ export const schemesData = [
   "benefit": "Financial assistance for treatment of...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6117,7 +6206,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6177,7 +6267,8 @@ export const schemesData = [
   "benefit": "The beneficiary will get financial as...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6241,7 +6332,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6299,7 +6391,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6359,7 +6452,8 @@ export const schemesData = [
   "benefit": "\ufeff Name of the Component Standard of A...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6413,7 +6507,8 @@ export const schemesData = [
   "benefit": "The Fellowship consists of - (i) An h...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6473,7 +6568,8 @@ export const schemesData = [
   "benefit": "The selected institutes will have to ...",
   "target": "Education & Learning, Transport & Infrastructure",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6547,7 +6643,8 @@ export const schemesData = [
   "benefit": "Duration of the Project: The duration...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6625,7 +6722,8 @@ export const schemesData = [
   "benefit": "Duration: One-Year Limit of Funding: ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6697,7 +6795,8 @@ export const schemesData = [
   "benefit": "Grant will be for Team of 10 Students...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6743,7 +6842,8 @@ export const schemesData = [
   "benefit": "Benefits: Subscriptions of e-Resource...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6817,7 +6917,8 @@ export const schemesData = [
   "benefit": "The total cost of the program is $12,...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6881,7 +6982,8 @@ export const schemesData = [
   "benefit": "\u20b950,000/- per annum for every year of...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -6957,7 +7059,8 @@ export const schemesData = [
   "benefit": "\u20b950,000/- per annum for every year of...",
   "target": "Education & Learning, Social welfare & Empowerment",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7033,7 +7136,8 @@ export const schemesData = [
   "benefit": "The maximum total expenditure for con...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7097,7 +7201,8 @@ export const schemesData = [
   "benefit": "The maximum total expenditure for con...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7161,7 +7266,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: Estimated proje...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7231,7 +7337,8 @@ export const schemesData = [
   "benefit": "The Distinguished Visiting Professor ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7305,7 +7412,8 @@ export const schemesData = [
   "benefit": "Financial Support The reimbursement o...",
   "target": "Education & Learning, Travel & Tourism",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7373,7 +7481,8 @@ export const schemesData = [
   "benefit": "Funding to the  institution/Universit...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7445,7 +7554,8 @@ export const schemesData = [
   "benefit": "Award and Recognition of the work: Th...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7503,7 +7613,8 @@ export const schemesData = [
   "benefit": "For Margdarshan Institute or Mentor I...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7571,7 +7682,8 @@ export const schemesData = [
   "benefit": "Training: Inductee Teachers will get ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7629,7 +7741,8 @@ export const schemesData = [
   "benefit": "Limit of Funding: Up to \u20b9 1,50,000/- ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7707,7 +7820,8 @@ export const schemesData = [
   "benefit": "Scholarship of \u20b9 25,000/- per month",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7773,7 +7887,8 @@ export const schemesData = [
   "benefit": "Funding to Institutions: \u20b95,00,000/- ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7851,7 +7966,8 @@ export const schemesData = [
   "benefit": "NUMBER OF SCHOLARSHIPS A maximum of 2...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -7933,7 +8049,8 @@ export const schemesData = [
   "benefit": "Maximum funding for translation work ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8003,7 +8120,8 @@ export const schemesData = [
   "benefit": "Funding to the institution: \u20b9 6,39,00...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8075,7 +8193,8 @@ export const schemesData = [
   "benefit": "\u20b91200 financial assistance to lactati...",
   "target": "Women and Child, Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8145,7 +8264,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Science, IT & Communications",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8221,7 +8341,8 @@ export const schemesData = [
   "benefit": "Financial Assistance of \u20b91,000/- per ...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8285,7 +8406,8 @@ export const schemesData = [
   "benefit": "Affordable High-Quality Seeds: Farmer...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8359,7 +8481,8 @@ export const schemesData = [
   "benefit": "Life Insurance Coverage: Natural deat...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8437,7 +8560,8 @@ export const schemesData = [
   "benefit": "Natural Death Benefit: \u20b930,000 is pay...",
   "target": "Social welfare & Empowerment, Banking,Financial Services and Insurance, Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8509,7 +8633,8 @@ export const schemesData = [
   "benefit": "Keeping in view the aims of the Schem...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8581,7 +8706,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: \u20b92,100/- per an...",
   "target": "Education & Learning, Women and Child",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8645,7 +8771,8 @@ export const schemesData = [
   "benefit": "Aastha cardholder families receive be...",
   "target": "Health & Wellness, Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8703,7 +8830,8 @@ export const schemesData = [
   "benefit": "The scheme offers housing assistance ...",
   "target": "Social welfare & Empowerment",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8765,7 +8893,8 @@ export const schemesData = [
   "benefit": "In Bhopal, Indore, Jabalpur, Gwalior,...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8837,7 +8966,8 @@ export const schemesData = [
   "benefit": "The fellowship amount is \u20b925,000/- pe...",
   "target": "Science, IT & Communications",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8905,7 +9035,8 @@ export const schemesData = [
   "benefit": "Financial assistance of \u20b91000/- per m...",
   "target": "Social welfare & Empowerment, Women and Child",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -8965,7 +9096,8 @@ export const schemesData = [
   "benefit": "Benefits A subsidy of Rs 50,000 will ...",
   "target": "Education & Learning, Skills & Employment",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9029,7 +9161,8 @@ export const schemesData = [
   "benefit": "Financial assistance of \u20b92,00,000/- p...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9093,7 +9226,8 @@ export const schemesData = [
   "benefit": "Financial Assistance based on the Edu...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9169,7 +9303,8 @@ export const schemesData = [
   "benefit": "The support shall be towards the foll...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9239,7 +9374,8 @@ export const schemesData = [
   "benefit": "Death Benefit: \u20b95,00,000/- granted (5...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9313,7 +9449,8 @@ export const schemesData = [
   "benefit": "Financial Assistance of \u20b91,500/- per ...",
   "target": "Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9387,7 +9524,8 @@ export const schemesData = [
   "benefit": "Financial assistance of \u20b920,000/- is ...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9457,7 +9595,8 @@ export const schemesData = [
   "benefit": "Hospitalization for 5 or more days: U...",
   "target": "Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9533,7 +9672,8 @@ export const schemesData = [
   "benefit": "Under the scheme, financial assistanc...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9589,7 +9729,8 @@ export const schemesData = [
   "benefit": "Under the scheme, families of workers...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9651,7 +9792,8 @@ export const schemesData = [
   "benefit": "Financial assistance of \u20b92,00,000/- i...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9717,7 +9859,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: \u20b92,25,000/-",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9793,7 +9936,8 @@ export const schemesData = [
   "benefit": "The animal owner can get the plan app...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9857,7 +10001,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: This scheme pro...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9919,7 +10064,8 @@ export const schemesData = [
   "benefit": "The rates of additional pension admis...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -9987,7 +10133,8 @@ export const schemesData = [
   "benefit": "An additional amount of \u20b9100 per mont...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10051,7 +10198,8 @@ export const schemesData = [
   "benefit": "The rates of additional pension admis...",
   "target": "Social welfare & Empowerment, Women and Child",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10117,7 +10265,8 @@ export const schemesData = [
   "benefit": "An additional amount of \u20b9100/- per mo...",
   "target": "Social welfare & Empowerment, Women and Child",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10179,7 +10328,8 @@ export const schemesData = [
   "benefit": "Accommodation: Hostel facility for al...",
   "target": "Education & Learning, Housing & Shelter",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10237,7 +10387,8 @@ export const schemesData = [
   "benefit": "10+2 Examination: \u20b93,000/-",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10307,7 +10458,8 @@ export const schemesData = [
   "benefit": "For plus 2 Examination: \u20b92,000/-",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10371,7 +10523,8 @@ export const schemesData = [
   "benefit": "Reimbursement: Full reimbursement of ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10427,7 +10580,8 @@ export const schemesData = [
   "benefit": "Reimbursement: Full reimbursement on ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10481,7 +10635,8 @@ export const schemesData = [
   "benefit": "Textbooks: Free textbooks for student...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10535,7 +10690,8 @@ export const schemesData = [
   "benefit": "Grants and Allocations: Financial ass...",
   "target": "Sports & Culture",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10609,7 +10765,8 @@ export const schemesData = [
   "benefit": "Providing free accommodation for educ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10665,7 +10822,8 @@ export const schemesData = [
   "benefit": "Admission Assistance: Free admission ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10737,7 +10895,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10801,7 +10960,8 @@ export const schemesData = [
   "benefit": "\u20b950,000/- is sanctioned as advance an...",
   "target": "Housing & Shelter, Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10871,7 +11031,8 @@ export const schemesData = [
   "benefit": "Subsidized Murrah Bull Total unit cos...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10923,7 +11084,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Education & Learning, Skills & Employment",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -10979,7 +11141,8 @@ export const schemesData = [
   "benefit": "Incentive: Financial grants for affor...",
   "target": "Skills & Employment, Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11045,7 +11208,8 @@ export const schemesData = [
   "benefit": "Agniveers will be given an attractive...",
   "target": "Skills & Employment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11113,7 +11277,8 @@ export const schemesData = [
   "benefit": "Agri-Clinics - Agri-Clinics are envis...",
   "target": "Agriculture,Rural & Environment, Business & Entrepreneurship, Skills & Employment",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11187,7 +11352,8 @@ export const schemesData = [
   "benefit": "Under this scheme, loans up to \u20b910,00...",
   "target": "Agriculture,Rural & Environment, Business & Entrepreneurship",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11247,7 +11413,8 @@ export const schemesData = [
   "benefit": "Benefits Of The Scheme To supplement ...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11321,7 +11488,8 @@ export const schemesData = [
   "benefit": "The scheme envisages the following be...",
   "target": "Agriculture,Rural & Environment, Transport & Infrastructure",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11373,7 +11541,8 @@ export const schemesData = [
   "benefit": "Selected women farmers, male farmers,...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11429,7 +11598,8 @@ export const schemesData = [
   "benefit": "Pattern of Assistance: Sponsorship of...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11495,7 +11665,8 @@ export const schemesData = [
   "benefit": "Development of Export Infrastructure:...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11565,7 +11736,8 @@ export const schemesData = [
   "benefit": "Pattern of Assistance: Providing a 60...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11621,7 +11793,8 @@ export const schemesData = [
   "benefit": "Pattern of Assistance: Free distribut...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11679,7 +11852,8 @@ export const schemesData = [
   "benefit": "The scheme targets to provide followi...",
   "target": "Agriculture,Rural & Environment, Business & Entrepreneurship",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11753,7 +11927,8 @@ export const schemesData = [
   "benefit": "Pattern of Assistance: Adaptive resea...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11807,7 +11982,8 @@ export const schemesData = [
   "benefit": "The scheme targets to provide followi...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11863,7 +12039,8 @@ export const schemesData = [
   "benefit": "Beneficiary: Unemployed youth The ben...",
   "target": "Social welfare & Empowerment, Banking,Financial Services and Insurance",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -11929,7 +12106,8 @@ export const schemesData = [
   "benefit": "Housing for serving State Government ...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12001,7 +12179,8 @@ export const schemesData = [
   "benefit": "Coaching to the scheduled tribe stude...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12067,7 +12246,8 @@ export const schemesData = [
   "benefit": "Honorarium of \u20b915,000 per day for ful...",
   "target": "Education & Learning, Skills & Employment, Science, IT & Communications",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12137,7 +12317,8 @@ export const schemesData = [
   "benefit": "Benefits The allowance is Rs",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12201,7 +12382,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12263,7 +12445,8 @@ export const schemesData = [
   "benefit": "Pension of \u20b92,000/- per month",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12329,7 +12512,8 @@ export const schemesData = [
   "benefit": "Tuition fee of \u20b93,000/- per year for ...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12403,7 +12587,8 @@ export const schemesData = [
   "benefit": "Hostel students receive a maintenance...",
   "target": "Education & Learning",
   icon: GraduationCap,
-    "category": "student",
+    "occupation": "student",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12469,7 +12654,8 @@ export const schemesData = [
   "benefit": "Under this scheme, the state governme...",
   "target": "Women and Child, Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12533,7 +12719,8 @@ export const schemesData = [
   "benefit": "The \u201cAmar Fasal Amar Gola\u201d scheme in ...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12603,7 +12790,8 @@ export const schemesData = [
   "benefit": "The eligible individual entities (not...",
   "target": "Banking,Financial Services and Insurance, Skills & Employment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12657,7 +12845,8 @@ export const schemesData = [
   "benefit": "The reservation under the Amma two-wh...",
   "target": "Social welfare & Empowerment, Transport & Infrastructure",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12739,7 +12928,8 @@ export const schemesData = [
   "benefit": "The scheme will be on a bed-and-break...",
   "target": "Travel & Tourism",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12797,7 +12987,8 @@ export const schemesData = [
   "benefit": "The Health Insurance (ANISHI) shall p...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12861,7 +13052,8 @@ export const schemesData = [
   "benefit": "Minimum amount of \u20b930,000 /- will be ...",
   "target": "Social welfare & Empowerment, Banking,Financial Services and Insurance",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12921,7 +13113,8 @@ export const schemesData = [
   "benefit": "Subsidy: Subsidy of 50% to 75% on she...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -12983,7 +13176,8 @@ export const schemesData = [
   "benefit": "Financial assistance of \u20b925,000/-",
   "target": "Women and Child, Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13053,7 +13247,8 @@ export const schemesData = [
   "benefit": "Financial assistance of \u20b925,000/-",
   "target": "Women and Child, Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13127,7 +13322,8 @@ export const schemesData = [
   "benefit": "In case of the death of the pensioner...",
   "target": "Banking,Financial Services and Insurance, Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13189,7 +13385,8 @@ export const schemesData = [
   "benefit": "Financial Assistance of \u20b93,000/- per ...",
   "target": "Skills & Employment, Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13251,7 +13448,8 @@ export const schemesData = [
   "benefit": "One free tour to various places every...",
   "target": "Transport & Infrastructure, Travel & Tourism",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13325,7 +13523,8 @@ export const schemesData = [
   "benefit": "Under this scheme, eligible beneficia...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13385,7 +13584,8 @@ export const schemesData = [
   "benefit": "The scheme provides \u20b9 10,000/- for th...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13443,7 +13643,8 @@ export const schemesData = [
   "benefit": "A one-time grant of \u20b95,000 is provide...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13507,7 +13708,8 @@ export const schemesData = [
   "benefit": "50 percent subsidy is payable for a m...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13561,7 +13763,8 @@ export const schemesData = [
   "benefit": "Lump sum financial assistance amount ...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13621,7 +13824,8 @@ export const schemesData = [
   "benefit": "The financial assistance under the sc...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13683,7 +13887,8 @@ export const schemesData = [
   "benefit": "Loan Amount (\u20b9): 5,00,000 - 10,00,000...",
   "target": "Banking,Financial Services and Insurance",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13741,7 +13946,8 @@ export const schemesData = [
   "benefit": "Free Shelter and Food",
   "target": "Social welfare & Empowerment, Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13811,7 +14017,8 @@ export const schemesData = [
   "benefit": "Total Cost of One Unit of Arka Vertic...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13875,7 +14082,8 @@ export const schemesData = [
   "benefit": "For children between 7 months to 3 ye...",
   "target": "Health & Wellness, Social welfare & Empowerment, Women and Child",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13937,7 +14145,8 @@ export const schemesData = [
   "benefit": "Under this scheme, various assistive ...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -13997,7 +14206,8 @@ export const schemesData = [
   "benefit": "The maximum amount of financial grant...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14073,7 +14283,8 @@ export const schemesData = [
   "benefit": "4750 farmers will be given piggery su...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14133,7 +14344,8 @@ export const schemesData = [
   "benefit": "Benefits The benefit of this scheme i...",
   "target": "Social welfare & Empowerment",
   icon: FileText,
-    "category": "other",
+    "occupation": "other",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14203,7 +14415,8 @@ export const schemesData = [
   "benefit": "Situation Financial Help On Death \u20b9 1...",
   "target": "Health & Wellness, Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14265,7 +14478,8 @@ export const schemesData = [
   "benefit": "Unorganized workers can receive up to...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14327,7 +14541,8 @@ export const schemesData = [
   "benefit": "Financial Assistance of \u20b9 20,000/-",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14393,7 +14608,8 @@ export const schemesData = [
   "benefit": "Under this scheme, financial assistan...",
   "target": "Health & Wellness, Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14467,7 +14683,8 @@ export const schemesData = [
   "benefit": "A sum of Rs",
   "target": "Health & Wellness, Women and Child",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14525,7 +14742,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: \u20b92,00,000/- for...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14595,7 +14813,8 @@ export const schemesData = [
   "benefit": "100% cost on purchase of artificial l...",
   "target": "Women and Child, Health & Wellness, Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14661,7 +14880,8 @@ export const schemesData = [
   "benefit": "Financial assistance of \u20b92,50,000/- i...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14723,7 +14943,8 @@ export const schemesData = [
   "benefit": "In case of normal death or accident (...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14789,7 +15010,8 @@ export const schemesData = [
   "benefit": "Under this scheme, registered constru...",
   "target": "Skills & Employment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14863,7 +15085,8 @@ export const schemesData = [
   "benefit": "Free medical treatment and monthly as...",
   "target": "Social welfare & Empowerment, Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14925,7 +15148,8 @@ export const schemesData = [
   "benefit": "\ufeff Name of Component Standard of Assis...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -14985,7 +15209,8 @@ export const schemesData = [
   "benefit": "Quantum of Assistance: \u20b95,000/-",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15057,7 +15282,8 @@ export const schemesData = [
   "benefit": "Subsidy of 90% of the total cost (or)...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15125,7 +15351,8 @@ export const schemesData = [
   "benefit": "Under the scheme, financial assistanc...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15185,7 +15412,8 @@ export const schemesData = [
   "benefit": "Under the scheme, financial assistanc...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15245,7 +15473,8 @@ export const schemesData = [
   "benefit": "Under the scheme, financial assistanc...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15305,7 +15534,8 @@ export const schemesData = [
   "benefit": "\ufeff Name of Component Standard of Assis...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15367,7 +15597,8 @@ export const schemesData = [
   "benefit": "Quantum of Assistance: \u20b94,000/-",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15439,7 +15670,8 @@ export const schemesData = [
   "benefit": "Under this scheme, an interest-free l...",
   "target": "Housing & Shelter, Banking,Financial Services and Insurance",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15505,7 +15737,8 @@ export const schemesData = [
   "benefit": "Quantum of Assistance: \u20b91,000/-",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15577,7 +15810,8 @@ export const schemesData = [
   "benefit": "The General Category farmers will be ...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15641,7 +15875,8 @@ export const schemesData = [
   "benefit": "The Scheduled Castes farmers will be ...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15705,7 +15940,8 @@ export const schemesData = [
   "benefit": "The Scheduled Tribes farmers will be ...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15769,7 +16005,8 @@ export const schemesData = [
   "benefit": "Permanent total disability due to acc...",
   "target": "Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15841,7 +16078,8 @@ export const schemesData = [
   "benefit": "\ufeff Name of Component Standard of assis...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15905,7 +16143,8 @@ export const schemesData = [
   "benefit": "Subsidy Assistance: 25% of the cost f...",
   "target": "Agriculture,Rural & Environment",
   icon: Wheat,
-    "category": "farmer",
+    "occupation": "farmer",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -15981,7 +16220,8 @@ export const schemesData = [
   "benefit": "Benefits Through this scheme financia...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16043,7 +16283,8 @@ export const schemesData = [
   "benefit": "Financial Assistance of \u20b9 3,00,000 fo...",
   "target": "Housing & Shelter, Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16105,7 +16346,8 @@ export const schemesData = [
   "benefit": "The components of the AMRUT consist o...",
   "target": "Utility & Sanitation, Transport & Infrastructure, Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16169,7 +16411,8 @@ export const schemesData = [
   "benefit": "Benefit In this scenario, the newborn...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16233,7 +16476,8 @@ export const schemesData = [
   "benefit": "AB PM-JAY provides cashless cover of ...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16303,7 +16547,8 @@ export const schemesData = [
   "benefit": "Free schooling, boarding and lodging,...",
   "target": "Social welfare & Empowerment, Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16371,7 +16616,8 @@ export const schemesData = [
   "benefit": "Under this scheme, expert care will b...",
   "target": "Health & Wellness, Utility & Sanitation",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16415,7 +16661,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: \u20b951,000/- in th...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16489,7 +16736,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: Beneficiaries r...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16553,7 +16801,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16613,7 +16862,8 @@ export const schemesData = [
   "benefit": "Under the scheme, bicycles are given ...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16679,7 +16929,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: \u20b91,00,000/-",
   "target": "Social welfare & Empowerment, Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16747,7 +16998,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: \u20b95,000/-",
   "target": "Health & Wellness, Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16811,7 +17063,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: \u20b97,500/- to \u20b930...",
   "target": "Health & Wellness, Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16877,7 +17130,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: \u20b937,500/-",
   "target": "Health & Wellness, Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -16945,7 +17199,8 @@ export const schemesData = [
   "benefit": "Financial Assistance: \u20b975,000/-",
   "target": "Health & Wellness, Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17013,7 +17268,8 @@ export const schemesData = [
   "benefit": "Families having BSKY Smart Health Car...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17085,7 +17341,8 @@ export const schemesData = [
   "benefit": "Provident Fund: The State Government ...",
   "target": "Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17163,7 +17420,8 @@ export const schemesData = [
   "benefit": "Financial Support: Beneficiaries rece...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17233,7 +17491,8 @@ export const schemesData = [
   "benefit": "Quantum of Assistance: 50% reimbursem...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17305,7 +17564,8 @@ export const schemesData = [
   "benefit": "Under this scheme, children under 18 ...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17363,7 +17623,8 @@ export const schemesData = [
   "benefit": "Benefits to the Institute - The admin...",
   "target": "Skills & Employment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17439,7 +17700,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17519,7 +17781,8 @@ export const schemesData = [
   "benefit": "This Scheme will be implemented with ...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17581,7 +17844,8 @@ export const schemesData = [
   "benefit": "The Board reimburses a minimum loan g...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17657,7 +17921,8 @@ export const schemesData = [
   "benefit": "\u20b91,00,000/- assistance to constructio...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17727,7 +17992,8 @@ export const schemesData = [
   "benefit": "Extensive Coverage for Medical Emerge...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17797,7 +18063,8 @@ export const schemesData = [
   "benefit": "The scheme seeks to provide cashless ...",
   "target": "Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17861,7 +18128,8 @@ export const schemesData = [
   "benefit": "Medicine worth \u20b910",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17915,7 +18183,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -17981,7 +18250,8 @@ export const schemesData = [
   "benefit": "All beneficiaries of the scheme are e...",
   "target": "Banking,Financial Services and Insurance, Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18061,7 +18331,8 @@ export const schemesData = [
   "benefit": "The scheme provides financial assista...",
   "target": "Health & Wellness, Social welfare & Empowerment",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18127,7 +18398,8 @@ export const schemesData = [
   "benefit": "Payment of minimum wages at the presc...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18189,7 +18461,8 @@ export const schemesData = [
   "benefit": "Night shelters for construction worke...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18259,7 +18532,8 @@ export const schemesData = [
   "benefit": "Housing Infrastructure: Free house co...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18319,7 +18593,8 @@ export const schemesData = [
   "benefit": "1",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18385,7 +18660,8 @@ export const schemesData = [
   "benefit": "Monthly Pension: \u20b92,000/- to eligible...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18457,7 +18733,8 @@ export const schemesData = [
   "benefit": "Quantum of Assistance: Upto \u20b95000/-",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18525,7 +18802,8 @@ export const schemesData = [
   "benefit": "Quantum of Assistance: Upto \u20b9500/- fo...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18593,7 +18871,8 @@ export const schemesData = [
   "benefit": "Scheme will support the acquisition/c...",
   "target": "Housing & Shelter",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18665,7 +18944,8 @@ export const schemesData = [
   "benefit": "Bicycles are provided to the women wo...",
   "target": "Skills & Employment, Social welfare & Empowerment, Women and Child",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18727,7 +19007,8 @@ export const schemesData = [
   "benefit": "Quantum of Assistance: One(1) cycle t...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18799,7 +19080,8 @@ export const schemesData = [
   "benefit": "Free checkup",
   "target": "Health & Wellness, Women and Child",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18857,7 +19139,8 @@ export const schemesData = [
   "benefit": "Free Physiotherapy given by the Physi...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18917,7 +19200,8 @@ export const schemesData = [
   "benefit": "The financial assistance of \u20b92,00,000...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -18973,7 +19257,8 @@ export const schemesData = [
   "benefit": "\u20b92,00,000/- in the case of natural death",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19033,7 +19318,8 @@ export const schemesData = [
   "benefit": "Funeral Assistance: \u20b96,000/- Ex-grati...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19091,7 +19377,8 @@ export const schemesData = [
   "benefit": "For Natural Death: \u20b950,000/-",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19163,7 +19450,8 @@ export const schemesData = [
   "benefit": "The financial assistance of \u20b950,000/-...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19225,7 +19513,8 @@ export const schemesData = [
   "benefit": "Under the scheme, an amount of \u20b91,00,...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19291,7 +19580,8 @@ export const schemesData = [
   "benefit": "Under the scheme, an amount of \u20b92,00,...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19359,7 +19649,8 @@ export const schemesData = [
   "benefit": "For Natural Death: \u20b91,00,000/-",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19433,7 +19724,8 @@ export const schemesData = [
   "benefit": "Cash assistance of \u20b950,000/- provided...",
   "target": "Social welfare & Empowerment",
   icon: Home,
-    "category": "housing",
+    "occupation": "housing",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19495,7 +19787,8 @@ export const schemesData = [
   "benefit": "The benefit under this scheme shall b...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19567,7 +19860,8 @@ export const schemesData = [
   "benefit": "The scheme will provide the below men...",
   "target": "Health & Wellness, Banking,Financial Services and Insurance",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19637,7 +19931,8 @@ export const schemesData = [
   "benefit": "Benefits Provides financial assistanc...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19711,7 +20006,8 @@ export const schemesData = [
   "benefit": "Under the scheme, financial assistanc...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19769,7 +20065,8 @@ export const schemesData = [
   "benefit": "Under this scheme, workers and their ...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19833,7 +20130,8 @@ export const schemesData = [
   "benefit": "Spectacle: \u20b9",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19915,7 +20213,8 @@ export const schemesData = [
   "benefit": "Under this scheme, treatment of prima...",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,
@@ -19961,7 +20260,8 @@ export const schemesData = [
   "benefit": "A pension of \u20b9500/- month",
   "target": "Health & Wellness",
   icon: Heart,
-    "category": "health",
+    "occupation": "health",
+    "category": ["General", "SC", "ST", "OBC"],
   "eligibility": {
     "minAge": 18,
     "maxAge": 60,

@@ -11,18 +11,17 @@ import { schemesData } from './data/SchemesData';
 const AuthView = ({ onComplete }) => {
   const [step, setStep] = useState(1);
   const [isLogin, setIsLogin] = useState(false);
-  const [formData, setFormData] = useState({ age: '', income: '', category: '', caste: '', state: '', password: '' });
+  const [formData, setFormData] = useState({ age: '', income: '', category: '', caste: '', state: '', password: '', email: '', firstName: '', lastName: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (isLogin) {
-      // Simulate quick login
-      const savedAccount = JSON.parse(localStorage.getItem('yojnasetuAccount'));
-      if (savedAccount) {
-        onComplete(savedAccount);
+      const savedUsers = JSON.parse(localStorage.getItem('yojnasetuUsers') || '{}');
+      const user = savedUsers[formData.email];
+      if (user && user.password === formData.password) {
+        onComplete(user);
       } else {
-        alert("No saved profile found. Please create an account.");
-        setIsLogin(false);
+        alert("Invalid email or password. Please try again or create an account.");
       }
       return;
     }
@@ -30,7 +29,9 @@ const AuthView = ({ onComplete }) => {
     if (step < 3) {
       setStep(step + 1);
     } else {
-      localStorage.setItem('yojnasetuAccount', JSON.stringify(formData));
+      const savedUsers = JSON.parse(localStorage.getItem('yojnasetuUsers') || '{}');
+      savedUsers[formData.email] = formData;
+      localStorage.setItem('yojnasetuUsers', JSON.stringify(savedUsers));
       onComplete(formData);
     }
   };
@@ -40,7 +41,7 @@ const AuthView = ({ onComplete }) => {
       <div className="auth-card">
         <div className="auth-sidebar">
           <div className="auth-logo">
-            <Sparkles size={28} /> Saarthi
+            <Sparkles size={28} /> YojnaSetu
           </div>
           <div className="auth-steps">
             {!isLogin ? (
@@ -79,12 +80,12 @@ const AuthView = ({ onComplete }) => {
             {isLogin && (
                <div className="auth-form-grid">
                  <div className="auth-form-group full">
-                   <label>Email Address</label>
-                   <input type="email" className="auth-input" placeholder="your@email.com" required />
+                   <label htmlFor="login-email">Email Address</label>
+                   <input id="login-email" name="email" type="email" autoComplete="username" className="auth-input" placeholder="your@email.com" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
                  </div>
                  <div className="auth-form-group full">
-                   <label>Password</label>
-                   <input type="password" className="auth-input" placeholder="••••••••" required />
+                   <label htmlFor="login-password">Password</label>
+                   <input id="login-password" name="password" type="password" autoComplete="current-password" className="auth-input" placeholder="••••••••" required value={formData.password} onChange={e => setFormData({...formData, password: e.target.value})} />
                  </div>
                </div>
             )}
@@ -93,19 +94,19 @@ const AuthView = ({ onComplete }) => {
               <div className="auth-form-grid">
                 <div className="auth-form-group">
                   <label>First Name</label>
-                  <input type="text" className="auth-input" placeholder="First Name" required />
+                  <input type="text" className="auth-input" placeholder="First Name" required value={formData.firstName} onChange={e => setFormData({...formData, firstName: e.target.value})} />
                 </div>
                 <div className="auth-form-group">
                   <label>Last Name</label>
-                  <input type="text" className="auth-input" placeholder="Last Name" required />
+                  <input type="text" className="auth-input" placeholder="Last Name" required value={formData.lastName} onChange={e => setFormData({...formData, lastName: e.target.value})} />
                 </div>
                 <div className="auth-form-group full">
-                  <label>Email Address</label>
-                  <input type="email" className="auth-input" placeholder="your@email.com" required />
+                  <label htmlFor="reg-email">Email Address</label>
+                  <input id="reg-email" name="email" type="email" autoComplete="username" className="auth-input" placeholder="your@email.com" required value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} />
                 </div>
                 <div className="auth-form-group full">
-                  <label>Create Password</label>
-                  <input type="password" className="auth-input" placeholder="••••••••" required value={formData.password} onChange={e => setFormData({...formData, password: e.target.value})} />
+                  <label htmlFor="reg-password">Create Password</label>
+                  <input id="reg-password" name="password" type="password" autoComplete="new-password" className="auth-input" placeholder="••••••••" required value={formData.password} onChange={e => setFormData({...formData, password: e.target.value})} />
                 </div>
                 <div className="auth-form-group full">
                   <label>Your State</label>
@@ -601,10 +602,7 @@ const SchemeDetailsView = ({ scheme, userState, onBack, onOpenChat }) => {
 // ==========================================
 // VIEW 4: CHATBOT (Base44 Gradient)
 // ==========================================
-// ==========================================
-// VIEW 4: CHATBOT (Base44 Gradient)
-// ==========================================
-const ChatbotView = ({ onBack, initialQuery }) => {
+const ChatbotView = ({ onBack, initialQuery, userState }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
@@ -620,23 +618,35 @@ const ChatbotView = ({ onBack, initialQuery }) => {
       setIsTyping(true);
 
       setTimeout(() => {
-        let botReply = "I can help you find government schemes! Please tell me your category (like Student, Farmer, Business) or your age and income.";
-        
-        const lower = initialQuery.toLowerCase();
-        if (lower.includes('apply') && lower.includes('online')) {
-          botReply = "You can easily apply online for this scheme. The official portal requires your Aadhaar, PAN, and basic documents. Here is the direct application link: https://myscheme.gov.in/";
-        } else if (lower.includes('offline') && lower.includes('office')) {
-          botReply = "To apply offline, you will need to visit the nearest government service center (CSC) or the respective department office. Please provide your city or pin code and I'll find the nearest office for you.";
-        }
-        
-        setMessages([
-          { text: initialQuery, isBot: false },
-          { text: botReply, isBot: true }
-        ]);
+        setMessages(prev => {
+          let botReply = "I can help you find government schemes! Please tell me your category (like Student, Farmer, Business) or your age and income.";
+          
+          const lower = initialQuery.toLowerCase();
+          
+          let currentScheme = "government scheme";
+          const botMessages = prev.filter(m => m.isBot).reverse();
+          for (const msg of botMessages) {
+            const match = msg.text.match(/'([^']+)'/);
+            if (match) {
+              currentScheme = match[1];
+              break;
+            }
+          }
+          const onlineLink = `https://www.google.com/search?q=Apply+online+for+${encodeURIComponent(currentScheme).replace(/%20/g, '+')}+official+website`;
+
+          if (lower.includes('apply') && lower.includes('online') || lower === 'online') {
+            botReply = `You can easily apply online. The official portal requires your Aadhaar, PAN, and basic documents. Here is the direct link to the official website: ${onlineLink}`;
+          } else if (lower.includes('offline') || (lower.includes('apply') && lower.includes('offline'))) {
+            const stateQuery = userState ? ` in ${userState}` : '';
+            botReply = `To apply offline, you will need to visit the nearest government service center (CSC) or the respective department office. You can find nearby offices here: https://www.google.com/maps/search/nearest+government+office${encodeURIComponent(stateQuery)}`;
+          }
+          
+          return [...prev, { text: botReply, isBot: true }];
+        });
         setIsTyping(false);
       }, 1500);
     }
-  }, [initialQuery]);
+  }, [initialQuery, userState]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -647,40 +657,68 @@ const ChatbotView = ({ onBack, initialQuery }) => {
   }, [messages, isTyping]);
 
   const handleSend = (text) => {
-    const userText = text || input;
+    const userText = (typeof text === 'string' ? text : input);
     if (!userText.trim()) return;
 
     if (!chatStarted) setChatStarted(true);
 
-    const newMessages = [...messages, { text: userText, isBot: false }];
-    setMessages(newMessages);
+    setMessages(prev => [...prev, { text: userText, isBot: false }]);
     setInput('');
     setIsTyping(true);
 
     // Simulated AI Response
     setTimeout(() => {
-      let botReply = "I can help you find government schemes! Please tell me your category (like Student, Farmer, Business) or your age and income.";
-      
-      const lower = userText.toLowerCase();
-      if (lower.includes('apply') && lower.includes('online')) {
-        botReply = "You can easily apply online for this scheme. The official portal requires your Aadhaar, PAN, and basic documents. Here is the direct application link: https://myscheme.gov.in/";
-      } else if (lower.includes('offline') && lower.includes('office')) {
-        botReply = "To apply offline, you will need to visit the nearest government service center (CSC) or the respective department office. Please provide your city or pin code and I'll find the nearest office for you.";
-      } else if (lower.includes('farmer') || lower.includes('agriculture')) {
-        botReply = "I found several schemes for farmers! The top recommendation is the 'PM-Kisan Samman Nidhi', which provides ₹6,000/year directly to your bank account. Should I show you how to apply?";
-      } else if (lower.includes('student') || lower.includes('scholarship')) {
-        botReply = "For students, we have schemes like the 'Central Sector Scholarship'. It offers ₹10,000/year for graduation level if your family income is below ₹8 Lakhs. Would you like details on documents needed?";
-      } else if (lower.includes('business') || lower.includes('loan')) {
-        botReply = "Looking to start a business? The 'PM MUDRA Yojana' offers loans up to ₹10 Lakh without collateral! Let me know if you want to see the eligibility criteria.";
-      } else if (lower.includes('health') || lower.includes('medical')) {
-        botReply = "For health coverage, the 'Ayushman Bharat' scheme provides up to ₹5 Lakhs free health insurance per family per year at empaneled hospitals. Do you have an Ayushman card?";
-      } else if (lower.includes('yes') || lower.includes('show') || lower.includes('details')) {
-        botReply = "Great! You typically need your Aadhaar Card, Income Certificate, and Bank Details. You can apply directly on the official portal. Would you like the direct application link?";
-      }
+      setMessages(prev => {
+        let botReply = "I can help you find government schemes! Please tell me your category (like Student, Farmer, Business) or your age and income.";
+        const lower = userText.toLowerCase();
+        const lastBotMessage = prev.length > 0 ? prev.filter(m => m.isBot).pop()?.text : '';
 
-      setMessages([...newMessages, { text: botReply, isBot: true }]);
+        let currentScheme = "government scheme";
+        const botMessages = prev.filter(m => m.isBot).reverse();
+        for (const msg of botMessages) {
+          const match = msg.text.match(/'([^']+)'/);
+          if (match) {
+            currentScheme = match[1];
+            break;
+          }
+        }
+        const onlineLink = `https://www.google.com/search?q=Apply+online+for+${encodeURIComponent(currentScheme).replace(/%20/g, '+')}+official+website`;
+
+        if (lower.includes('apply') && lower.includes('online') || lower === 'online') {
+          botReply = `You can easily apply online. The official portal requires your Aadhaar, PAN, and basic documents. Here is the direct link to the official website: ${onlineLink}`;
+        } else if (lower.includes('offline') || (lower.includes('apply') && lower.includes('offline'))) {
+          const stateQuery = userState ? ` in ${userState}` : '';
+          botReply = `To apply offline, you will need to visit the nearest government service center (CSC) or the respective department office. You can find nearby offices here: https://www.google.com/maps/search/nearest+government+office${encodeURIComponent(stateQuery)}`;
+        } else if (lower.includes('farmer') || lower.includes('agriculture')) {
+          botReply = "I found several schemes for farmers! The top recommendation is the 'PM-Kisan Samman Nidhi', which provides ₹6,000/year directly to your bank account. Should I show you how to apply?";
+        } else if (lower.includes('student') || lower.includes('scholarship')) {
+          botReply = "For students, we have schemes like the 'Central Sector Scholarship'. It offers ₹10,000/year for graduation level if your family income is below ₹8 Lakhs. Would you like details on documents needed?";
+        } else if (lower.includes('business') || lower.includes('loan')) {
+          botReply = "Looking to start a business? The 'PM MUDRA Yojana' offers loans up to ₹10 Lakh without collateral! Let me know if you want to see the eligibility criteria.";
+        } else if (lower.includes('health') || lower.includes('medical')) {
+          botReply = "For health coverage, the 'Ayushman Bharat' scheme provides up to ₹5 Lakhs free health insurance per family per year at empaneled hospitals. Do you have an Ayushman card?";
+        } else if (lower.includes('yes') || lower.includes('show') || lower.includes('details')) {
+          if (lastBotMessage && lastBotMessage.includes("Aapko online ya offline kese apply krna hai?")) {
+            botReply = "Please reply with 'online' or 'offline'.";
+          } else {
+            botReply = "Great! You typically need your Aadhaar Card, Income Certificate, and Bank Details. Aapko online ya offline kese apply krna hai?";
+          }
+        }
+        return [...prev, { text: botReply, isBot: true }];
+      });
       setIsTyping(false);
     }, 1500);
+  };
+
+  const renderMessageText = (text) => {
+    const urlRegex = /(https?:\/\/[^\s]+)/g;
+    const parts = text.split(urlRegex);
+    return parts.map((part, i) => {
+      if (part.match(urlRegex)) {
+        return <a key={i} href={part} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', fontWeight: 'bold' }}>{part}</a>;
+      }
+      return part;
+    });
   };
 
   return (
@@ -747,9 +785,11 @@ const ChatbotView = ({ onBack, initialQuery }) => {
                 borderBottomRightRadius: !msg.isBot ? '4px' : '20px',
                 maxWidth: '80%', 
                 boxShadow: '0 4px 15px rgba(0,0,0,0.05)',
-                lineHeight: '1.5'
+                lineHeight: '1.5',
+                wordBreak: 'break-word',
+                whiteSpace: 'pre-wrap'
               }}>
-                {msg.text}
+                {renderMessageText(msg.text)}
               </div>
             ))}
             {isTyping && (
@@ -948,7 +988,7 @@ export default function App() {
       {currentView === 'home' && <HomeView userProfile={userProfile} onViewDetails={handleViewDetails} onOpenChat={() => setCurrentView('chat')} onLogout={handleLogout} onLogin={() => setCurrentView('auth')} onSearch={(params) => { setSearchParams(params); setCurrentView('search'); }} />}
       {currentView === 'search' && <SearchResultsView searchParams={searchParams} onViewDetails={handleViewDetails} onOpenChat={() => setCurrentView('chat')} onLogout={handleLogout} onBack={() => setCurrentView('home')} />}
       {currentView === 'details' && <SchemeDetailsView scheme={selectedScheme} userState={searchParams?.state || userProfile?.state || ''} onBack={() => setCurrentView(searchParams ? 'search' : 'home')} onOpenChat={(query) => { setInitialChatQuery(query); setCurrentView('chat'); }} />}
-      {currentView === 'chat' && <ChatbotView onBack={() => { setCurrentView('home'); setInitialChatQuery(''); }} initialQuery={initialChatQuery} />}
+      {currentView === 'chat' && <ChatbotView onBack={() => { setCurrentView('home'); setInitialChatQuery(''); }} initialQuery={initialChatQuery} userState={searchParams?.state || userProfile?.state || ''} />}
 
       {currentView !== 'chat' && currentView !== 'auth' && (
         <button 

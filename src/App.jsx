@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { 
   Sparkles, Check, ChevronLeft, Search, MessageSquare, ArrowRight,
   Clock, MessageCircle, MapPin, FileText, Send, Zap, ShieldCheck,
-  Briefcase, HelpCircle, Info, PhoneCall, ExternalLink
+  Briefcase, HelpCircle, Info, PhoneCall, ExternalLink, X,
+  UserPlus, FileEdit, CheckCircle, CreditCard, Landmark, Home, User, Banknote
 } from 'lucide-react';
 import { schemesData } from './data/SchemesData';
 import logoImg from './assets/yojnasetu_logo.png';
@@ -521,12 +522,46 @@ const SchemeDetailsView = ({ scheme, userState, onBack, onOpenChat }) => {
     }
   };
 
+  const [selectedDoc, setSelectedDoc] = useState(null);
+
   const currentEligibility = language === 'hi' && translatedData ? translatedData.eligibility : scheme.details.eligibility;
   const currentBenefits = language === 'hi' && translatedData ? translatedData.benefits : scheme.details.benefits;
   const title = language === 'hi' && translatedData ? translatedData.title : scheme.title;
 
   return (
     <div className="details-view" style={{ background: '#f8fafc', padding: '2rem 0' }}>
+      {/* Document Modal */}
+      {selectedDoc && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          background: 'rgba(0,0,0,0.6)', backdropFilter: 'blur(8px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 9999, padding: '2rem'
+        }} onClick={() => setSelectedDoc(null)}>
+          <div style={{
+            background: 'white', padding: '3rem', borderRadius: '24px',
+            maxWidth: '500px', width: '100%', textAlign: 'center',
+            boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)',
+            position: 'relative', animation: 'modalSlide 0.3s ease-out'
+          }} onClick={e => e.stopPropagation()}>
+            <button 
+              onClick={() => setSelectedDoc(null)}
+              style={{ position: 'absolute', top: '1.5rem', right: '1.5rem', border: 'none', background: '#f1f5f9', width: '32px', height: '32px', borderRadius: '50%', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+            >
+              <X size={20} color="#64748b" />
+            </button>
+            <div style={{ width: '80px', height: '80px', background: '#fef2f2', color: '#ef4444', borderRadius: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 1.5rem' }}>
+              <FileText size={40} />
+            </div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: 800, marginBottom: '1rem', color: '#0f172a' }}>Document Name</h3>
+            <p style={{ fontSize: '1.2rem', color: '#475569', lineHeight: 1.6, fontWeight: 500 }}>{selectedDoc}</p>
+            <button className="btn btn-primary" style={{ marginTop: '2rem', width: '100%' }} onClick={() => setSelectedDoc(null)}>
+              Got it, Thanks!
+            </button>
+          </div>
+        </div>
+      )}
+
       <div className="container" style={{ maxWidth: '1100px', background: 'white', borderRadius: '16px', boxShadow: '0 20px 50px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
         
         {/* Navigation */}
@@ -594,20 +629,24 @@ const SchemeDetailsView = ({ scheme, userState, onBack, onOpenChat }) => {
 
         {/* How It Works */}
         {scheme.details.apply && scheme.details.apply.length > 0 && (
-          <>
-            <h3 className="section-heading">How It Works</h3>
+          <div style={{ marginTop: '4rem' }}>
+            <h3 className="section-heading" style={{ marginLeft: '3rem', marginBottom: '2rem' }}>How It Works</h3>
             <div className="timeline-horizontal">
               {scheme.details.apply.slice(0, 5).map((step, i) => (
                 <div key={i} className="step-h">
                   <div className="step-h-icon">
-                    {i === 0 ? <Search size={24}/> : i === 1 ? <FileText size={24}/> : i === 2 ? <Send size={24}/> : i === 3 ? <Check size={24}/> : <Zap size={24}/>}
+                    {i === 0 ? <Search size={32} color="#3b82f6"/> : 
+                     i === 1 ? <UserPlus size={32} color="#10b981"/> : 
+                     i === 2 ? <FileEdit size={32} color="#f59e0b"/> : 
+                     i === 3 ? <Clock size={32} color="#6366f1"/> : 
+                     <CheckCircle size={32} color="#16a34a"/>}
                   </div>
                   <h5><span className="step-h-number">{i+1}</span> {i === 0 ? 'Eligibility' : i === 1 ? 'Register' : i === 2 ? 'Apply' : i === 3 ? 'Approval' : 'Complete'}</h5>
-                  <p>{step.length > 50 ? step.substring(0, 50) + '...' : step}</p>
+                  <p>{step}</p>
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
 
         {/* Benefits & Eligibility Split */}
@@ -634,23 +673,44 @@ const SchemeDetailsView = ({ scheme, userState, onBack, onOpenChat }) => {
 
         {/* Documents Required */}
         {scheme.details.documents && scheme.details.documents.length > 0 && (
-          <>
-            <h3 className="section-heading">Documents Required</h3>
+          <div style={{ marginTop: '4rem' }}>
+            <h3 className="section-heading" style={{ marginLeft: '3rem', marginBottom: '2rem' }}>Documents Required</h3>
             <div className="doc-grid">
-              {scheme.details.documents.map((doc, i) => (
-                <div key={i} className="doc-card">
-                  <div className="doc-icon" style={{ background: i % 2 === 0 ? '#fef2f2' : '#eff6ff', color: i % 2 === 0 ? '#ef4444' : '#3b82f6' }}>
-                    <FileText size={24} />
+              {scheme.details.documents.map((doc, i) => {
+                const getDocIcon = (name) => {
+                  const lower = name.toLowerCase();
+                  if (lower.includes('aadhaar') || lower.includes('id') || lower.includes('card')) return <CreditCard size={32} />;
+                  if (lower.includes('bank') || lower.includes('passbook')) return <Landmark size={32} />;
+                  if (lower.includes('residence') || lower.includes('address') || lower.includes('shelter') || lower.includes('house')) return <Home size={32} />;
+                  if (lower.includes('photo')) return <User size={32} />;
+                  if (lower.includes('income') || lower.includes('salary') || lower.includes('caste')) return <FileText size={32} />;
+                  return <FileText size={32} />;
+                };
+                
+                const getShortName = (name) => {
+                  const words = name.split(' ');
+                  if (words.length <= 3) return name;
+                  return words.slice(0, 3).join(' ') + '...';
+                };
+                
+                return (
+                  <div key={i} className="doc-card" onClick={() => setSelectedDoc(doc)} style={{ cursor: 'pointer' }}>
+                    <div className="doc-icon" style={{ 
+                      background: i % 4 === 0 ? '#eff6ff' : i % 4 === 1 ? '#ecfdf5' : i % 4 === 2 ? '#fff7ed' : '#f5f3ff', 
+                      color: i % 4 === 0 ? '#3b82f6' : i % 4 === 1 ? '#10b981' : i % 4 === 2 ? '#f59e0b' : '#8b5cf6' 
+                    }}>
+                      {getDocIcon(doc)}
+                    </div>
+                    <h5>{getShortName(doc)}</h5>
+                    <p>Click to see full info</p>
                   </div>
-                  <h5>{doc.length > 15 ? doc.substring(0, 12) + '...' : doc}</h5>
-                  <p>Required</p>
-                </div>
-              ))}
+                );
+              })}
             </div>
-            <div className="tip-banner">
+            <div style={{ margin: '0 3rem 3rem', background: '#fffbeb', border: '1px solid #fde68a', padding: '1rem 1.5rem', borderRadius: '8px', color: '#b45309', fontSize: '0.95rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
               <Zap size={18} /> <strong>Tip:</strong> Keep all documents scanned and ready before applying to save time!
             </div>
-          </>
+          </div>
         )}
 
         {/* Action Footer */}

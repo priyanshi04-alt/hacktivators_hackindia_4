@@ -1,9 +1,13 @@
 import React, { useState } from 'react';
 import { 
   Sparkles, Check, ChevronLeft, Search, MessageSquare, ArrowRight,
-  Clock, MessageCircle, MapPin, FileText, Send
+  Clock, MessageCircle, MapPin, FileText, Send, Zap, ShieldCheck,
+  Briefcase, HelpCircle, Info, PhoneCall, ExternalLink
 } from 'lucide-react';
 import { schemesData } from './data/SchemesData';
+import logoImg from './assets/yojnasetu_logo.png';
+import successImg from './assets/scheme_success.png';
+import supportImg from './assets/support_character.png';
 
 // ==========================================
 // VIEW 1: AUTH (Login / Signup)
@@ -40,8 +44,8 @@ const AuthView = ({ onComplete }) => {
     <div className="auth-view">
       <div className="auth-card">
         <div className="auth-sidebar">
-          <div className="auth-logo">
-            <Sparkles size={28} /> YojnaSetu
+          <div className="auth-logo" style={{ display: 'flex', alignItems: 'center' }}>
+            <img src={logoImg} alt="YojnaSetu Logo" style={{ height: '48px', width: 'auto', objectFit: 'contain', marginRight: '12px' }} /> YojnaSetu
           </div>
           <div className="auth-steps">
             {!isLogin ? (
@@ -250,7 +254,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
       <header className="home-header">
         <div className="container header-content">
           <div className="logo">
-            <Sparkles size={32} color="#dc2626" />
+            <img src={logoImg} alt="YojnaSetu Logo" style={{ height: '56px', width: 'auto', objectFit: 'contain', marginRight: '12px' }} />
             <div>
               YojnaSetu
               <span className="logo-sub">Your Guide to Government Schemes</span>
@@ -391,12 +395,8 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
                     </div>
                   )}
 
-                  <div className="card-bottom">
-                    <div>
-                      <div className="benefit-label">Benefit</div>
-                      <div className="benefit-amount">{scheme.benefit}</div>
-                    </div>
-                    <button className="btn btn-primary" onClick={() => onViewDetails(scheme)}>
+                  <div className="card-bottom" style={{ display: 'block' }}>
+                    <button className="btn btn-primary" style={{ width: '100%', padding: '0.8rem' }} onClick={() => onViewDetails(scheme)}>
                       View Details →
                     </button>
                   </div>
@@ -500,11 +500,9 @@ const SchemeDetailsView = ({ scheme, userState, onBack, onOpenChat }) => {
       }, 1000);
     } else if (mode === 'hindi') {
       setLanguage('hi');
-      // Translate explanation
       const exp = await translateText(scheme.simpleExplanation || "This scheme provides financial assistance.");
       setAiExplanation(exp);
       
-      // Translate lists if not already done
       if (!translatedData) {
         const hindiElig = await translateArray(scheme.details.eligibility);
         const hindiBen = await translateArray(scheme.details.benefits);
@@ -522,78 +520,160 @@ const SchemeDetailsView = ({ scheme, userState, onBack, onOpenChat }) => {
   const currentEligibility = language === 'hi' && translatedData ? translatedData.eligibility : scheme.details.eligibility;
   const currentBenefits = language === 'hi' && translatedData ? translatedData.benefits : scheme.details.benefits;
   const title = language === 'hi' && translatedData ? translatedData.title : scheme.title;
-  
+
   return (
-    <div className="details-view">
-      <div className="details-card">
-        <a className="details-back" onClick={onBack}>
-          <ChevronLeft size={24} /> Back
-        </a>
+    <div className="details-view" style={{ background: '#f8fafc', padding: '2rem 0' }}>
+      <div className="container" style={{ maxWidth: '1100px', background: 'white', borderRadius: '16px', boxShadow: '0 20px 50px rgba(0,0,0,0.05)', overflow: 'hidden' }}>
         
-        <div className="details-hero">
-          <div className="details-date-badge">
-            <span>GOVT</span>
-            <span>FUND</span>
-          </div>
-          <div className="details-category-tag">
-            {scheme.target}
+        {/* Navigation */}
+        <div style={{ padding: '1.5rem 3rem', borderBottom: '1px solid #f1f5f9', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+          <a onClick={onBack} style={{ color: '#64748b', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '0.5rem', fontWeight: '600' }}>
+            <ChevronLeft size={20} /> Back to Search
+          </a>
+          <div style={{ display: 'flex', gap: '0.5rem' }}>
+            <div style={{ padding: '0.4rem 0.8rem', background: '#fef2f2', color: '#ef4444', borderRadius: '20px', fontSize: '0.75rem', fontWeight: 'bold' }}>GOVT FUND</div>
           </div>
         </div>
 
-        <div className="details-content">
-          <h1 className="details-title">{title}</h1>
-          <div className="details-subtitle">{language === 'hi' ? 'वह योजना जो आपको सशक्त बनाती है।' : 'The scheme that empowers you.'}</div>
-          
-          <div style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', flexWrap: 'wrap' }}>
-            <button className="btn" style={{ background: 'white', color: '#ef4444', border: '1px solid #ef4444' }} onClick={() => handleExplain('simple')} disabled={isAiLoading}>
-              {isAiLoading ? 'Asking AI...' : <><Sparkles size={18} /> Explain Simply</>}
-            </button>
-            <button className="btn" style={{ background: '#f59e0b', color: 'white' }} onClick={() => handleExplain('kid')} disabled={isAiLoading}>
-              Explain like I'm 10
-            </button>
-            <button className="btn" style={{ background: '#3b82f6', color: 'white' }} onClick={() => handleExplain('hindi')} disabled={isAiLoading}>
-              Explain in Hindi
-            </button>
-          </div>
-
-          {aiExplanation && (
-            <div className="ai-box">
-              <h4 style={{ color: '#ef4444', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                <Sparkles size={18} /> {language === 'hi' ? 'AI सरल व्याख्या' : 'AI Simple Explanation'}
-              </h4>
-              <p style={{ color: '#1e293b', fontSize: '1.1rem', margin: 0 }}>"{aiExplanation}"</p>
+        {/* Hero Section */}
+        <div className="details-hero">
+          <div className="details-hero-text">
+            <div className="details-category-tag" style={{ position: 'static', display: 'inline-block', marginBottom: '1rem' }}>{scheme.target}</div>
+            <h1 className="details-title" style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{title}</h1>
+            <div className="details-subtitle" style={{ marginBottom: '2rem' }}>{language === 'hi' ? 'वह योजना जो आपको सशक्त बनाती है।' : 'The scheme that empowers you.'}</div>
+            
+            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+              <button className="btn" style={{ background: 'white', color: '#ef4444', border: '1px solid #ef4444' }} onClick={() => handleExplain('simple')} disabled={isAiLoading}>
+                {isAiLoading ? 'Asking AI...' : <><Sparkles size={18} /> Explain Simply</>}
+              </button>
+              <button className="btn" style={{ background: '#f59e0b', color: 'white' }} onClick={() => handleExplain('kid')} disabled={isAiLoading}>
+                Explain like I'm 10
+              </button>
+              <button className="btn" style={{ background: '#3b82f6', color: 'white' }} onClick={() => handleExplain('hindi')} disabled={isAiLoading}>
+                Explain in Hindi
+              </button>
             </div>
-          )}
+          </div>
+          <div className="details-hero-image">
+            <img src={successImg} alt="Illustration" />
+          </div>
+        </div>
 
-          <div className="details-text">
-            <p style={{ marginBottom: '1rem', color: '#1e293b' }}><strong>{language === 'hi' ? 'पात्रता:' : 'Eligibility:'}</strong></p>
-            <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>
-              {currentEligibility.map((item, i) => <li key={i}>{item}</li>)}
-            </ul>
+        {aiExplanation && (
+          <div className="ai-box" style={{ margin: '2rem 3rem 0' }}>
+            <h4 style={{ color: '#ef4444', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+              <Sparkles size={18} /> {language === 'hi' ? 'AI सरल व्याख्या' : 'AI Simple Explanation'}
+            </h4>
+            <p style={{ color: '#1e293b', fontSize: '1.1rem', margin: 0 }}>"{aiExplanation}"</p>
+          </div>
+        )}
 
-            <p style={{ marginBottom: '1rem', color: '#1e293b' }}><strong>{language === 'hi' ? 'लाभ:' : 'Benefits:'}</strong></p>
-            <ul style={{ paddingLeft: '1.5rem', marginBottom: '1.5rem' }}>
+        {/* Quick Stats Bar */}
+        <div className="details-quick-stats">
+          <div className="stat-card">
+            <div className="stat-icon"><Check size={20} /></div>
+            <div>Full Eligibility <br/><span style={{fontSize: '0.75rem', color: '#64748b'}}>Verified Profile</span></div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon" style={{background: '#e0f2fe', color: '#0284c7'}}><Zap size={20} /></div>
+            <div>Quick Approval <br/><span style={{fontSize: '0.75rem', color: '#64748b'}}>Direct Transfer</span></div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon" style={{background: '#fef3c7', color: '#d97706'}}><ShieldCheck size={20} /></div>
+            <div>Safe & Secure <br/><span style={{fontSize: '0.75rem', color: '#64748b'}}>Govt Protected</span></div>
+          </div>
+          <div className="stat-card">
+            <div className="stat-icon" style={{background: '#f3e8ff', color: '#9333ea'}}><Briefcase size={20} /></div>
+            <div>Career Support <br/><span style={{fontSize: '0.75rem', color: '#64748b'}}>Future Growth</span></div>
+          </div>
+        </div>
+
+        {/* How It Works */}
+        {scheme.details.apply && scheme.details.apply.length > 0 && (
+          <>
+            <h3 className="section-heading">How It Works</h3>
+            <div className="timeline-horizontal">
+              {scheme.details.apply.slice(0, 5).map((step, i) => (
+                <div key={i} className="step-h">
+                  <div className="step-h-icon">
+                    {i === 0 ? <Search size={24}/> : i === 1 ? <FileText size={24}/> : i === 2 ? <Send size={24}/> : i === 3 ? <Check size={24}/> : <Zap size={24}/>}
+                  </div>
+                  <h5><span className="step-h-number">{i+1}</span> {i === 0 ? 'Eligibility' : i === 1 ? 'Register' : i === 2 ? 'Apply' : i === 3 ? 'Approval' : 'Complete'}</h5>
+                  <p>{step.length > 50 ? step.substring(0, 50) + '...' : step}</p>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        {/* Benefits & Eligibility Split */}
+        <div className="split-layout">
+          <div className="benefit-box">
+            <div className="box-header"><Check size={24} /> Key Benefits</div>
+            <ul className="check-list">
               {currentBenefits.map((item, i) => <li key={i}>{item}</li>)}
             </ul>
+            <div className="box-footer-note">
+              <Sparkles size={18} /> Empowering your future. Strengthening our community.
+            </div>
           </div>
-
-          <div className="details-meta">
-            <div className="details-meta-item"><Clock size={16}/> Apply Online</div>
-            <div className="details-meta-item"><MapPin size={16}/> Nearest Office</div>
-          </div>
-
-          <div style={{ marginTop: '1.5rem', padding: '1.5rem', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
-            <p style={{ margin: '0 0 1rem 0', fontWeight: '600', color: '#1e293b', fontSize: '1.05rem' }}>Need help for applying?</p>
-            <div style={{ display: 'flex', gap: '1rem' }}>
-              <button className="btn" style={{ background: '#ecfdf5', color: '#059669', border: '1px solid #10b981', flex: 1, display: 'flex', justifyContent: 'center', gap: '0.5rem' }} onClick={() => window.open(`https://www.google.com/search?q=Apply+online+for+${encodeURIComponent(scheme.title)}+official+website`, '_blank')}>
-                <Clock size={18} /> Online
-              </button>
-              <button className="btn" style={{ background: '#eff6ff', color: '#2563eb', border: '1px solid #3b82f6', flex: 1, display: 'flex', justifyContent: 'center', gap: '0.5rem' }} onClick={() => window.open(`https://www.google.com/maps/search/nearest+government+office+for+${encodeURIComponent(scheme.title)}${userState ? '+in+' + encodeURIComponent(userState) : ''}`, '_blank')}>
-                <MapPin size={18} /> Offline
-              </button>
+          <div className="eligibility-box">
+            <div className="box-header"><Info size={24} /> Who Can Apply?</div>
+            <ul className="check-list">
+              {currentEligibility.map((item, i) => <li key={i}>{item}</li>)}
+            </ul>
+            <div className="box-footer-note">
+              <Info size={18} /> Ensure you have all documents ready before starting the process.
             </div>
           </div>
         </div>
+
+        {/* Documents Required */}
+        {scheme.details.documents && scheme.details.documents.length > 0 && (
+          <>
+            <h3 className="section-heading">Documents Required</h3>
+            <div className="doc-grid">
+              {scheme.details.documents.map((doc, i) => (
+                <div key={i} className="doc-card">
+                  <div className="doc-icon" style={{ background: i % 2 === 0 ? '#fef2f2' : '#eff6ff', color: i % 2 === 0 ? '#ef4444' : '#3b82f6' }}>
+                    <FileText size={24} />
+                  </div>
+                  <h5>{doc.length > 15 ? doc.substring(0, 12) + '...' : doc}</h5>
+                  <p>Required</p>
+                </div>
+              ))}
+            </div>
+            <div className="tip-banner">
+              <Zap size={18} /> <strong>Tip:</strong> Keep all documents scanned and ready before applying to save time!
+            </div>
+          </>
+        )}
+
+        {/* Action Footer */}
+        <div className="action-footer">
+          <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+            <img src={supportImg} alt="Assistant" className="action-character" style={{ mixBlendMode: 'multiply' }} />
+            <div className="action-text">
+              <h4>Need help for applying?</h4>
+              <p>We're here to assist you!</p>
+            </div>
+          </div>
+          <div className="action-card online" onClick={() => window.open(`https://www.google.com/search?q=Apply+online+for+${encodeURIComponent(scheme.title)}+official+website`, '_blank')}>
+            <div className="stat-icon" style={{ background: '#dcfce7', color: '#16a34a' }}><ExternalLink size={24} /></div>
+            <div>
+              <div style={{ fontWeight: 'bold' }}>Apply Online</div>
+              <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Quick & easy <br/>application process</div>
+            </div>
+          </div>
+          <div className="action-card offline" onClick={() => window.open(`https://www.google.com/maps/search/nearest+government+office+for+${encodeURIComponent(scheme.title)}${userState ? '+in+' + encodeURIComponent(userState) : ''}`, '_blank')}>
+            <div className="stat-icon" style={{ background: '#e0f2fe', color: '#0284c7' }}><MapPin size={24} /></div>
+            <div>
+              <div style={{ fontWeight: 'bold' }}>Offline</div>
+              <div style={{ fontSize: '0.8rem', color: '#64748b' }}>Visit nearest office <br/>for assistance</div>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   );
@@ -724,8 +804,8 @@ const ChatbotView = ({ onBack, initialQuery, userState }) => {
   return (
     <div className="chat-view">
       <header className="chat-header">
-        <div className="chat-logo" style={{ cursor: 'pointer' }} onClick={onBack}>
-          <Sparkles /> YojnaSetu
+        <div className="chat-logo" style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }} onClick={onBack}>
+          <img src={logoImg} alt="YojnaSetu Logo" style={{ height: '36px', width: 'auto', objectFit: 'contain', marginRight: '12px' }} /> YojnaSetu
         </div>
         <button className="btn" style={{ background: 'rgba(255,255,255,0.5)', color: '#1e293b' }} onClick={onBack}>
           Exit Chat
@@ -868,7 +948,7 @@ const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, 
       <header className="home-header">
         <div className="container header-content">
           <div className="logo" style={{ cursor: 'pointer' }} onClick={onBack}>
-            <Sparkles size={32} color="#dc2626" />
+            <img src={logoImg} alt="YojnaSetu Logo" style={{ height: '56px', width: 'auto', objectFit: 'contain', marginRight: '12px' }} />
             <div>
               YojnaSetu
               <span className="logo-sub">Your Guide to Government Schemes</span>
@@ -916,12 +996,8 @@ const SearchResultsView = ({ searchParams, onViewDetails, onOpenChat, onLogout, 
                     ⭐ <strong>High Match:</strong> Based on your input
                   </div>
 
-                  <div className="card-bottom">
-                    <div>
-                      <div className="benefit-label">Benefit</div>
-                      <div className="benefit-amount">{scheme.benefit}</div>
-                    </div>
-                    <button className="btn btn-primary" onClick={() => onViewDetails(scheme)}>
+                  <div className="card-bottom" style={{ display: 'block' }}>
+                    <button className="btn btn-primary" style={{ width: '100%', padding: '0.8rem' }} onClick={() => onViewDetails(scheme)}>
                       View Details →
                     </button>
                   </div>

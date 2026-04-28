@@ -441,7 +441,7 @@ const HomeView = ({ userProfile, onViewDetails, onOpenChat, onLogout, onLogin, o
 // ==========================================
 // VIEW 3: SCHEME DETAILS (Article Card + AI Modes)
 // ==========================================
-const SchemeDetailsView = ({ scheme, onBack }) => {
+const SchemeDetailsView = ({ scheme, onBack, onOpenChat }) => {
   const [aiExplanation, setAiExplanation] = useState(null);
   const [isAiLoading, setIsAiLoading] = useState(false);
   const [language, setLanguage] = useState('en');
@@ -560,6 +560,18 @@ const SchemeDetailsView = ({ scheme, onBack }) => {
             <div className="details-meta-item"><Clock size={16}/> Apply Online</div>
             <div className="details-meta-item"><MapPin size={16}/> Nearest Office</div>
           </div>
+
+          <div style={{ marginTop: '1.5rem', padding: '1.5rem', background: '#f8fafc', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+            <p style={{ margin: '0 0 1rem 0', fontWeight: '600', color: '#1e293b', fontSize: '1.05rem' }}>Need help for applying?</p>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <button className="btn" style={{ background: '#ecfdf5', color: '#059669', border: '1px solid #10b981', flex: 1, display: 'flex', justifyContent: 'center', gap: '0.5rem' }} onClick={() => window.open(`https://www.google.com/search?q=Apply+online+for+${encodeURIComponent(scheme.title)}+official+website`, '_blank')}>
+                <Clock size={18} /> Online
+              </button>
+              <button className="btn" style={{ background: '#eff6ff', color: '#2563eb', border: '1px solid #3b82f6', flex: 1, display: 'flex', justifyContent: 'center', gap: '0.5rem' }} onClick={() => window.open(`https://www.google.com/maps/search/nearest+government+office+for+${encodeURIComponent(scheme.title)}`, '_blank')}>
+                <MapPin size={18} /> Offline
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -572,12 +584,39 @@ const SchemeDetailsView = ({ scheme, onBack }) => {
 // ==========================================
 // VIEW 4: CHATBOT (Base44 Gradient)
 // ==========================================
-const ChatbotView = ({ onBack }) => {
+const ChatbotView = ({ onBack, initialQuery }) => {
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
   const [isTyping, setIsTyping] = useState(false);
   const [chatStarted, setChatStarted] = useState(false);
   const messagesEndRef = React.useRef(null);
+  const initialSent = React.useRef(false);
+
+  React.useEffect(() => {
+    if (initialQuery && !initialSent.current) {
+      initialSent.current = true;
+      setChatStarted(true);
+      setMessages([{ text: initialQuery, isBot: false }]);
+      setIsTyping(true);
+
+      setTimeout(() => {
+        let botReply = "I can help you find government schemes! Please tell me your category (like Student, Farmer, Business) or your age and income.";
+        
+        const lower = initialQuery.toLowerCase();
+        if (lower.includes('apply') && lower.includes('online')) {
+          botReply = "You can easily apply online for this scheme. The official portal requires your Aadhaar, PAN, and basic documents. Here is the direct application link: https://myscheme.gov.in/";
+        } else if (lower.includes('offline') && lower.includes('office')) {
+          botReply = "To apply offline, you will need to visit the nearest government service center (CSC) or the respective department office. Please provide your city or pin code and I'll find the nearest office for you.";
+        }
+        
+        setMessages([
+          { text: initialQuery, isBot: false },
+          { text: botReply, isBot: true }
+        ]);
+        setIsTyping(false);
+      }, 1500);
+    }
+  }, [initialQuery]);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -603,7 +642,11 @@ const ChatbotView = ({ onBack }) => {
       let botReply = "I can help you find government schemes! Please tell me your category (like Student, Farmer, Business) or your age and income.";
       
       const lower = userText.toLowerCase();
-      if (lower.includes('farmer') || lower.includes('agriculture')) {
+      if (lower.includes('apply') && lower.includes('online')) {
+        botReply = "You can easily apply online for this scheme. The official portal requires your Aadhaar, PAN, and basic documents. Here is the direct application link: https://myscheme.gov.in/";
+      } else if (lower.includes('offline') && lower.includes('office')) {
+        botReply = "To apply offline, you will need to visit the nearest government service center (CSC) or the respective department office. Please provide your city or pin code and I'll find the nearest office for you.";
+      } else if (lower.includes('farmer') || lower.includes('agriculture')) {
         botReply = "I found several schemes for farmers! The top recommendation is the 'PM-Kisan Samman Nidhi', which provides ₹6,000/year directly to your bank account. Should I show you how to apply?";
       } else if (lower.includes('student') || lower.includes('scholarship')) {
         botReply = "For students, we have schemes like the 'Central Sector Scholarship'. It offers ₹10,000/year for graduation level if your family income is below ₹8 Lakhs. Would you like details on documents needed?";
@@ -843,6 +886,7 @@ export default function App() {
   const [userProfile, setUserProfile] = useState(null);
   const [selectedScheme, setSelectedScheme] = useState(null);
   const [searchParams, setSearchParams] = useState(null);
+  const [initialChatQuery, setInitialChatQuery] = useState('');
 
   React.useEffect(() => {
     // Check local storage for existing session
@@ -874,13 +918,13 @@ export default function App() {
       {currentView === 'auth' && <AuthView onComplete={handleAuthComplete} />}
       {currentView === 'home' && <HomeView userProfile={userProfile} onViewDetails={handleViewDetails} onOpenChat={() => setCurrentView('chat')} onLogout={handleLogout} onLogin={() => setCurrentView('auth')} onSearch={(params) => { setSearchParams(params); setCurrentView('search'); }} />}
       {currentView === 'search' && <SearchResultsView searchParams={searchParams} onViewDetails={handleViewDetails} onOpenChat={() => setCurrentView('chat')} onLogout={handleLogout} onBack={() => setCurrentView('home')} />}
-      {currentView === 'details' && <SchemeDetailsView scheme={selectedScheme} onBack={() => setCurrentView(searchParams ? 'search' : 'home')} />}
-      {currentView === 'chat' && <ChatbotView onBack={() => setCurrentView('home')} />}
+      {currentView === 'details' && <SchemeDetailsView scheme={selectedScheme} onBack={() => setCurrentView(searchParams ? 'search' : 'home')} onOpenChat={(query) => { setInitialChatQuery(query); setCurrentView('chat'); }} />}
+      {currentView === 'chat' && <ChatbotView onBack={() => { setCurrentView('home'); setInitialChatQuery(''); }} initialQuery={initialChatQuery} />}
 
       {currentView !== 'chat' && currentView !== 'auth' && (
         <button 
           className="floating-chat-btn" 
-          onClick={() => setCurrentView('chat')}
+          onClick={() => { setInitialChatQuery(''); setCurrentView('chat'); }}
           title="Ask AI Assistant"
         >
           <MessageSquare size={28} />
